@@ -14,7 +14,8 @@
  */
 angular.module( 'app.home', [
   'ui.router',
-  'plusOne'
+  'plusOne',
+  'firebase'
 ])
 
 /**
@@ -38,7 +39,14 @@ angular.module( 'app.home', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', function HomeController( $scope ) {
+.controller( 'HomeCtrl', function HomeController( $scope, $firebase ) {
+  var ref = new Firebase("https://languagehuntgamehub.firebaseio.com/");
+  // create an AngularFire reference to the data
+  var sync = $firebase(ref);
+
+  var syncObject = sync.$asObject();
+
+  syncObject.$bindTo($scope, "game");
 })
 
 ;

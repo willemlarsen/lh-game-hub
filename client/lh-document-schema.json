@@ -1,0 +1,34 @@
+{
+  "language": {
+    "parent": "french",
+    "dialect": "paris"
+  },
+  "lapSequence": {
+    "constraint": "HungarianPottyMouth",
+    "laps": [{
+      "grammerConstraint": "I/you in present tense",
+      "squares": [
+
+        {
+          "name": "what",
+          "greeting": [
+            "hello", "hello"
+          ],
+          "exchanges": [
+            [
+              "What is that?",
+              "That is a pen."
+            ],
+            [
+              "Is that a pen?",
+              "Yes, that is a pen."
+            ]
+          ],
+          "parting": [
+            "goodbye", "goodbye"
+          ]
+        }
+      ]
+    }]
+  }
+}
