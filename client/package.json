@@ -1,16 +1,16 @@
 {
-  "author": "Josh David Miller",
-  "name": "ngbp",
-  "version": "0.3.2",
-  "homepage": "https://github.com/ngbp/ngbp",
+  "author": "Willem Larsen",
+  "name": "LH-Game-Hub",
+  "version": "0.0.1",
+  "homepage": "https://github.com/willemlarsen/LH-Game-Hub",
   "licenses": {
     "type": "MIT",
-    "url": "https://raw.github.com/ngbp/ngbp/master/LICENSE"
+    "url": "https://github.com/willemlarsen/LH-Game-Hub/LICENSE"
   },
-  "bugs": "https://github.com/ngbp/ngbp/issues",
+  "bugs": "https://github.com/willemlarsen/LH-Game-Hub/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:ngbp/ngbp.git"
+    "url": "git@github.com:willemlarsen/LH-Game-Hub.git"
   },
   "dependencies": {},
   "devDependencies": {
