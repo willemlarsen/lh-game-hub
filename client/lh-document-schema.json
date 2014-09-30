@@ -13,20 +13,22 @@
         "squares": [{
           "name": "what",
           "greeting": [
-            "Dia duit.", "Dia is Miura dhit."
+            { "text": "Dia duit.", "audio": "dia-duit.mp3" },
+            { "text": "Dia is Miura dhit.", "audio": "dia-is-miura-dhit.mp3" }
           ],
           "exchanges": [
-            [
-              "Cad é seo?",
-              "Is cupán é."
-            ],
-            [
-              "An cupán é?",
-              "'S ea, is cupán é."
-            ]
+            {
+              "question": { "text": "Cad é seo?", "audiofile": "cad-e-seo.mp3" },
+              "answer": { "text": "Is cupán é.", "audiofile": "is-cupan-e.mp3" }
+            },
+            {
+              "question": { "text": "An cupán é?", "audiofile": "an-cupan-e.mp3" },
+              "answer": { "text": "'S ea, is cupán é.", "audiofile": "s-ea-is-cupan-e.mp3" }
+            }
           ],
           "parting": [
-            "Slán.", "Slán."
+            { "text": "Slán.",  "audiofile": "slan.mp3" },
+	          { "text": "Slán.", "audiofile": "slan.mp3" }
           ]
         }]
       }]

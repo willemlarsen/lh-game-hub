@@ -5,11 +5,18 @@
   </p>
 </div>
 <div ng-repeat="square in game.scripts[0].strategy[0].laps[0].squares">
-  <h1 >
-  <p> <strong>{{square.name}}</strong></p>
-  </h1>
+  <p><strong>{{square.name}}</strong></p>
   <ul  ng-repeat="exchange in square.exchanges">
-    <li class="lead">{{exchange[0]}}</li>
-    <li class="lead">{{exchange[1]}}</li>
+    <li class="lead">
+      <audio controls>
+        <source src="assets/irish/conemara/cad-e-seo.mp3" type="audio/mpeg"/>
+        <!-- <source src="assets/irish/conemara/{{exchange.question.audiofile}}" type="audio/mp3"/> -->
+        </audio>
+      {{exchange.question.text}}
+      </li>
+    <li class="lead">
+      <!-- <audio src="assets/Irish/Conemara/{{exchange.answer.audiofile}}"/> -->
+      {{exchange.answer.text}}
+    </li>
   </ul>
 </div>
