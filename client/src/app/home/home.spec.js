@@ -12,8 +12,6 @@
 //   }));
 // });
 
-// "use strict";
-
 describe('HomeController', function () {
   var  scope,
        home = ["home"];
@@ -24,39 +22,37 @@ describe('HomeController', function () {
         inject(function ($rootScope, $controller, $firebase) {
             scope = $rootScope.$new();
 
-            mockFirebase = sinon.stub($firebase);
+            // mockFirebase = sinon.stub($firebase);
             // mockCatalogRepository.getCatalog.returns(catalog);
             // mockRegistrationService = sinon.stub(registrationService);
 
-            $controller("HomeController", {
-                $scope: scope,
-                firebase: mockFirebase
-            });
+            // $controller("HomeController", {
+            //     $scope: scope,
+            //     firebase: mockFirebase
+            // });
 
         });
     });
 
     describe('when the controller first loads', function () {
 
-        // it('the course catalog is retrieved', function () {
-        //     sinon.assert.calledOnce(mockCatalogRepository.getCatalog);
+        // it('the game is retrieved', function () {
+        //     sinon.assert.calledOnce(mockFirebase.getGame);
         // });
         // it('puts the catalog on the scope', function() {
         //     expect(scope.catalog).toEqual(catalog);
         // });
 
     });
-    // describe('when registering for a course', function() {
-    //     var courseId = 'courseId';
-    //     var response = {success: true, message: ''};
 
-    //     it('adds the course to the wizard\'s schedule', function() {
-    //         mockRegistrationService.register.returns(response);
-    //         scope.register(courseId);
-    //         sinon.assert.calledWith(mockRegistrationService.register, courseId);
-    //     });
+    describe('audio_path', function() {
 
-    // });
+        // it('creates the path', function() {
+        //   expect($scope.audio_path("onething", "twothing")).toBe("onethingtwothing");
+
+        // });
+
+    });
 
 });
 
