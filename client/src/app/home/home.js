@@ -48,7 +48,7 @@ angular.module( 'app.home', [
 
   syncObject.$bindTo($scope, "game");
 
-  $scope.audio_path = function (path, filename) { return path + filename; }
+  $scope.audio_path = function (path, filename) { return path + filename; };
 })
 
 ;
