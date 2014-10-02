@@ -11,25 +11,18 @@
     <li>Constraint:</li>
     <li>Props:</li>
     </ul>
-  <h2>What?</h2>
-
-      <h2>{{form.name}}</h2>
-      <div ng-repeat="exchange in exchanges">
-              <input type="text" class="xdTextBox" ng-model=xchange.question.text/>
-              <input type="text" class="xdTextBox" ng-model="cont.a_number"/>
-
-      </div>
-      <button ng-click="submit(form)">Submit</button>
-      <button ng-click="addFields(form)">Add</button>
-      <hr>
-    </form>
-
-    <form>
-      <input type="text"  placeholder="What is that?"><br>
-      <input type="text"  placeholder="That is a cup."><br>
-      <hr>
-      <button ng-click="addFields(form)">Add</button>
-
-    </form>
+  <div>
+    <h2>What?</h2>
+      <p>{{what}}</p>
+      <form ng-class = "exchangesForm" ng-repeat="exchange in exchanges">
+              <input type="text" class="xdTextBox" id="question" placeholder="{{exchange[0]}}"/><br>
+              <input type="text" class="xdTextBox" id="answer" placeholder="{{exchange[1]}}"/><br>
+              <button ng-click="submit(form)">Submit</button><br>
+              <hr>
+      </form>
+  </div>
+    <div>
+      <button ng-click="addFields()">Add</button>
+    </div>
 
 </div>
