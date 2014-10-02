@@ -11,6 +11,7 @@ module.exports = function ( karma ) {
     files: [
       <% scripts.forEach( function ( file ) { %>'<%= file %>',
       <% }); %>
+      'node_modules/sinon/pkg/sinon.js',
       'src/**/*.js',
       'src/**/*.coffee',
     ],

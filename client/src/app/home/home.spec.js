@@ -22,14 +22,14 @@ describe('HomeController', function () {
         inject(function ($rootScope, $controller, $firebase) {
             scope = $rootScope.$new();
 
-            // mockFirebase = sinon.stub($firebase);
-            // mockCatalogRepository.getCatalog.returns(catalog);
-            // mockRegistrationService = sinon.stub(registrationService);
+            mockFirebase = sinon.stub($firebase);
+            mockCatalogRepository.getCatalog.returns(catalog);
+            mockRegistrationService = sinon.stub(registrationService);
 
-            // $controller("HomeController", {
-            //     $scope: scope,
-            //     firebase: mockFirebase
-            // });
+            $controller("HomeController", {
+                $scope: scope,
+                firebase: mockFirebase
+            });
 
         });
     });
