@@ -20,7 +20,7 @@ angular.module('app.builder', [
 
 .controller('BuilderCtrl', function BuilderController($scope, $firebase) {
   $scope.exchanges = [
-   ["What is that?", "That is a cup."]
+   [{ "question": "What is that?", "answer": "That is a cup." } ]
   ];
 
   $scope.form = { 'exchanges': [ [] ] };

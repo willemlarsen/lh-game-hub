@@ -32,7 +32,7 @@ describe('BuilderCtrl', function() {
  describe('exchanges form', function() {
 
   it('appends paired question and answer fields to display', function() {
-    var form = { 'exchanges': [ [] ] };
+    var form = { 'exchanges': [ {} ] };
     scope.addFields(form);
     expect(form.exchanges.length).toBe(2);
   });
