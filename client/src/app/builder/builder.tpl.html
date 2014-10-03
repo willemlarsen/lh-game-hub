@@ -1,5 +1,5 @@
 <div >
-<h1>Builder</h1>
+  <h1>Builder</h1>
 </div>
 <div>
   <h2>Language: Irish</h2>
@@ -7,22 +7,21 @@
   <h2>Progression: Easy style</h2>
   <h2>Variant: Brían's Irish</h2>
   <h2>Lap: </h2>
-    <ul>
+  <ul>
     <li>Constraint:</li>
     <li>Props:</li>
-    </ul>
+  </ul>
   <div>
     <h2>What?</h2>
-      <p>{{what}}</p>
-      <form ng-class = "exchangesForm" ng-repeat="exchange in exchanges">
-              <input type="text" class="xdTextBox" id="question" placeholder="{{exchange[0]}}"/><br>
-              <input type="text" class="xdTextBox" id="answer" placeholder="{{exchange[1]}}"/><br>
-              <button ng-click="submit(form)">Submit</button><br>
-              <hr>
-      </form>
-  </div>
-    <div>
+    <p>{{what}}</p>
+    <form ng-class = "exchangesForm" >
+      <div ng-repeat="exchange in exchanges">
+        <input type="text" class="xdTextBox" id="question" placeholder="{{exchange[0]}}"/><br>
+        <input type="text" class="xdTextBox" id="answer" placeholder="{{exchange[1]}}"/><br>
+      </div>
+      <button ng-click="submit(form)">Submit</button>
       <button ng-click="addFields()">Add</button>
-    </div>
-
+      <hr>
+    </form>
+  </div>
 </div>
