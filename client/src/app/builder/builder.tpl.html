@@ -14,13 +14,13 @@
   <div>
     <h2>What?</h2>
     <p>{{what}}</p>
-    <form ng-class = "exchangesForm" >
-      <div ng-repeat="exchange in exchanges">
+    <form>
+      <div ng-repeat="exchange in form.exchanges">
         <input type="text" class="xdTextBox" id="question" placeholder="{{exchange[0]}}"/><br>
         <input type="text" class="xdTextBox" id="answer" placeholder="{{exchange[1]}}"/><br>
       </div>
       <button ng-click="submit(form)">Submit</button>
-      <button ng-click="addFields()">Add</button>
+      <button ng-click="addFields(form)">Add</button>
       <hr>
     </form>
   </div>
