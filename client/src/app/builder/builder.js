@@ -18,7 +18,7 @@ angular.module('app.builder', [
  });
 })
 
-.controller('BuilderCtrl', function BuilderController($scope, $firebase) {
+.controller('BuilderCtrl', function BuilderController($scope, $firebase, ExchangeRepository) {
   $scope.exchanges = [
    [{ "question": "What is that?", "answer": "That is a cup." } ]
   ];
@@ -28,6 +28,12 @@ angular.module('app.builder', [
   $scope.addFields = function(form) {
     form.exchanges.push([]);
   };
+
+  $scope.submit = function(form) {
+    ExchangeRepository.save(form);
+  };
+
+
 })
 
 ;

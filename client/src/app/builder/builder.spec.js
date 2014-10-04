@@ -1,14 +1,15 @@
 describe('BuilderCtrl', function() {
  var scope,
+  mockExchangeRepository,
   builder = ["builder"];
 
  beforeEach(function() {
   module("app");
 
-  inject(function($rootScope, $controller) {
+  inject(function($rootScope, $controller, ExchangeRepository) {
    scope = $rootScope.$new();
 
-   // mockFirebase = sinon.stub($firebase);
+   mockExchangeRepository = sinon.stub(ExchangeRepository);
 
    $controller("BuilderCtrl", {
     $scope: scope
@@ -37,6 +38,15 @@ describe('BuilderCtrl', function() {
     expect(form.exchanges.length).toBe(2);
   });
 
+  it('submits inputted script text into exchange exchangeRepository', function() {
+
+    var form = [{}];
+
+    scope.submit(form);
+    expect(mockExchangeRepository.save.called).toBe(true);
+  });
+
  });
+
 
 });
