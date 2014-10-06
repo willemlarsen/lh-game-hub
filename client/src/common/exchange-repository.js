@@ -1,8 +1,8 @@
 angular.module('app').factory('ExchangeRepository', function() {
-return {
+ return {
 
-    save: function (form) {
-      console.log(form);
-    }
-  };
+  save: function(form) {
+   console.log(form);
+  }
+ };
 });
