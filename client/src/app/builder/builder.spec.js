@@ -1,15 +1,15 @@
 describe('BuilderCtrl', function() {
  var scope,
-  mockExchangeRepository,
+  mockSquareRepository,
   builder = ["builder"];
 
  beforeEach(function() {
   module("app");
 
-  inject(function($rootScope, $controller, ExchangeRepository) {
+  inject(function($rootScope, $controller, SquareRepository) {
    scope = $rootScope.$new();
 
-   mockExchangeRepository = sinon.stub(ExchangeRepository);
+   mockSquareRepository = sinon.stub(SquareRepository);
 
    $controller("BuilderCtrl", {
     $scope: scope
@@ -38,12 +38,12 @@ describe('BuilderCtrl', function() {
     expect(form.exchanges.length).toBe(2);
   });
 
-  it('submits inputted script text into exchange exchangeRepository', function() {
+  it('submits inputted script text into exchange SquareRepository', function() {
 
     var form = [{}];
 
     scope.submit(form);
-    expect(mockExchangeRepository.save.called).toBe(true);
+    expect(mockSquareRepository.save.called).toBe(true);
   });
 
  });

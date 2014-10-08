@@ -18,7 +18,7 @@ angular.module('app.builder', [
  });
 })
 
-.controller('BuilderCtrl', function BuilderController($scope, $firebase, ExchangeRepository) {
+.controller('BuilderCtrl', function BuilderController($scope, $firebase, SquareRepository) {
   $scope.exchanges = [
    [{ "question": "What is that?", "answer": "That is a cup." } ]
   ];
@@ -30,7 +30,7 @@ angular.module('app.builder', [
   };
 
   $scope.submit = function(form) {
-    ExchangeRepository.save(form);
+    SquareRepository.save(form);
   };
 
 

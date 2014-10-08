@@ -39,14 +39,14 @@ angular.module( 'app.home', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', function HomeController( $scope, $firebase, ExchangeRepository ) {
+.controller( 'HomeCtrl', function HomeController( $scope, SquareRepository ) {
   // var ref = new Firebase("https://languagehuntgamehub.firebaseio.com");
   // create an AngularFire reference to the data
   // var sync = $firebase(ref);
 
   // var syncObject = sync.$asObject();
 
-  $scope.exchanges = ExchangeRepository.getExchanges();
+  $scope.square = SquareRepository.getSquare();
 
   // syncObject.$bindTo($scope, "game");
 

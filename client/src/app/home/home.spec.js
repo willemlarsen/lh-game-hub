@@ -14,17 +14,17 @@
 
 describe('HomeCtrl', function () {
   var   scope,
-        mockExchangeRepository,
+        mockSquareRepository,
         home = ["home"];
 
     beforeEach(function () {
         module("app");
 
-        inject(function ($rootScope, $controller, ExchangeRepository) {
+        inject(function ($rootScope, $controller, SquareRepository) {
             scope = $rootScope.$new();
 
             // mockFirebase = sinon.stub($firebase);
-            mockExchangeRepository = sinon.stub(ExchangeRepository);
+            mockSquareRepository = sinon.stub(SquareRepository);
 
             $controller("HomeCtrl", {
                 $scope: scope
@@ -45,9 +45,9 @@ describe('HomeCtrl', function () {
 
     // });
 
-    describe('when the player page is loaded', function () {
-        it('loads all the exchanges for that user', function () {
-            sinon.assert.calledOnce(mockExchangeRepository.getExchanges);
+    describe('when the game player page is loaded', function () {
+        it('loads the square', function () {
+            sinon.assert.calledOnce(mockSquareRepository.getSquare);
         });
     });
 
