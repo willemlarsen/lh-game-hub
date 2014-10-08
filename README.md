@@ -6,7 +6,7 @@ Thanks To [Zhon Johansen](http://github.com/zhon), Emmanuel Gaillot, and [Jay Ba
 
 License
 -------
-Language Hunters Game Hub is copyright &copy; 2014 by _______________
+Language Hunt Game Hub is copyright &copy; 2014 by Language Hunters
 . All rights reserved. Use of the source code included here is
 governed by an MIT license that can be found in the LICENSE file.
 
