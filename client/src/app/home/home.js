@@ -39,16 +39,18 @@ angular.module( 'app.home', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', function HomeController( $scope, $firebase ) {
-  var ref = new Firebase("https://languagehuntgamehub.firebaseio.com");
+.controller( 'HomeCtrl', function HomeController( $scope, $firebase, ExchangeRepository ) {
+  // var ref = new Firebase("https://languagehuntgamehub.firebaseio.com");
   // create an AngularFire reference to the data
-  var sync = $firebase(ref);
+  // var sync = $firebase(ref);
 
-  var syncObject = sync.$asObject();
+  // var syncObject = sync.$asObject();
 
-  syncObject.$bindTo($scope, "game");
+  $scope.exchanges = ExchangeRepository.getExchanges();
 
-  $scope.audio_path = function (path, filename) { return path + filename; };
+  // syncObject.$bindTo($scope, "game");
+
+  // $scope.audio_path = function (path, filename) { return path + filename; };
 })
 
 ;

@@ -12,27 +12,29 @@
 //   }));
 // });
 
-describe('HomeController', function () {
-  var  scope,
-       home = ["home"];
+describe('HomeCtrl', function () {
+  var   scope,
+        mockExchangeRepository,
+        home = ["home"];
 
     beforeEach(function () {
         module("app");
 
-        inject(function ($rootScope, $controller, $firebase) {
+        inject(function ($rootScope, $controller, ExchangeRepository) {
             scope = $rootScope.$new();
 
-            mockFirebase = sinon.stub($firebase);
+            // mockFirebase = sinon.stub($firebase);
+            mockExchangeRepository = sinon.stub(ExchangeRepository);
 
-            $controller("HomeController", {
-                $scope: scope,
-                firebase: mockFirebase
+            $controller("HomeCtrl", {
+                $scope: scope
+                // firebase: mockFirebase
             });
 
         });
     });
 
-    describe('when the controller first loads', function () {
+    // describe('when the controller first loads', function () {
 
         // it('the game is retrieved', function () {
         //     sinon.assert.calledOnce(mockFirebase.getGame);
@@ -41,6 +43,12 @@ describe('HomeController', function () {
         //     expect(scope.catalog).toEqual(catalog);
         // });
 
+    // });
+
+    describe('when the player page is loaded', function () {
+        it('loads all the exchanges for that user', function () {
+            sinon.assert.calledOnce(mockExchangeRepository.getExchanges);
+        });
     });
 
     describe('audio_path', function() {

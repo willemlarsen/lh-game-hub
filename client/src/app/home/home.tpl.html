@@ -6,7 +6,7 @@
 </div>
 <div ng-repeat="square in game.scripts[0].strategy[0].laps[0].squares">
   <p><strong>{{square.name}}</strong></p>
-  <ul  ng-repeat="exchange in square.exchanges">
+  <ul  ng-repeat="exchange in exchanges">
     <li class="lead">
       <audio controls>
         <source ng-src="{{audio_path('assets/irish/conemara/', exchange.question.audiofile)}}" type="audio/mp3"/>
