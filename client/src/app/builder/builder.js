@@ -19,10 +19,6 @@ angular.module('app.builder', [
 })
 
 .controller('BuilderCtrl', function BuilderController($scope, $firebase, SquareRepository) {
-  $scope.square = {
-    "interactions":
-   [ { "question": "What is that?", "answer": "That is a cup." } ]
-  };
 
   $scope.form = { 'square': [ [] ] };
 
