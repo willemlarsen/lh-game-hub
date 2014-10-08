@@ -19,14 +19,15 @@ angular.module('app.builder', [
 })
 
 .controller('BuilderCtrl', function BuilderController($scope, $firebase, SquareRepository) {
-  $scope.exchanges = [
-   [{ "question": "What is that?", "answer": "That is a cup." } ]
-  ];
+  $scope.square = {
+    "interactions":
+   [ { "question": "What is that?", "answer": "That is a cup." } ]
+  };
 
-  $scope.form = { 'exchanges': [ [] ] };
+  $scope.form = { 'square': [ [] ] };
 
   $scope.addFields = function(form) {
-    form.exchanges.push([]);
+    form.square.push([]);
   };
 
   $scope.submit = function(form) {

@@ -30,15 +30,15 @@ describe('BuilderCtrl', function() {
 
  });
 
- describe('exchanges form', function() {
+ describe('square form', function() {
 
   it('appends paired question and answer fields to display', function() {
-    var form = { 'exchanges': [ {} ] };
+    var form = { 'square': [ {} ] };
     scope.addFields(form);
-    expect(form.exchanges.length).toBe(2);
+    expect(form.square.length).toBe(2);
   });
 
-  it('submits inputted script text into exchange SquareRepository', function() {
+  it('saves exchange text to SquareRepository', function() {
 
     var form = [{}];
 
