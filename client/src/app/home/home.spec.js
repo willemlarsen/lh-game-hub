@@ -23,8 +23,6 @@ describe('HomeController', function () {
             scope = $rootScope.$new();
 
             mockFirebase = sinon.stub($firebase);
-            mockCatalogRepository.getCatalog.returns(catalog);
-            mockRegistrationService = sinon.stub(registrationService);
 
             $controller("HomeController", {
                 $scope: scope,
