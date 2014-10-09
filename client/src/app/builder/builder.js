@@ -20,10 +20,10 @@ angular.module('app.builder', [
 
 .controller('BuilderCtrl', function BuilderController($scope, $firebase, SquareRepository) {
 
-  $scope.form = { 'square': [ [] ] };
+  $scope.form  = { 'interactions': [ [] ] };
 
   $scope.addFields = function(form) {
-    form.square.push([]);
+    form.interactions.push([]);
   };
 
   $scope.submit = function(form) {

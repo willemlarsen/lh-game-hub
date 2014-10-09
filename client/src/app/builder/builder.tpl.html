@@ -15,9 +15,9 @@
     <h2>What?</h2>
     <p>{{what}}</p>
     <form>
-      <div ng-repeat="exchange in form.exchanges">
-        <input type="text" class="xdTextBox" ng-model="exchange.question" placeholder="{{exchange[0]}}"/><br>
-        <input type="text" class="xdTextBox" ng-model="exchange.answer" placeholder="{{exchange[1]}}"/><br>
+      <div ng-repeat="interaction in form.interactions">
+        <input type="text" class="xdTextBox" ng-model="interaction.question" placeholder="{{interaction[0]}}"/><br>
+        <input type="text" class="xdTextBox" ng-model="interaction.answer" placeholder="{{interaction[1]}}"/><br>
         <br>
       </div>
       <button ng-click="submit(form)">Submit</button>

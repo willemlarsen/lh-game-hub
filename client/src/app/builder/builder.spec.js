@@ -33,9 +33,9 @@ describe('BuilderCtrl', function() {
  describe('square form', function() {
 
   it('appends paired question and answer fields to display', function() {
-    var form = { 'square': [ {} ] };
+    var form = { 'interactions': [ [] ] };
     scope.addFields(form);
-    expect(form.square.length).toBe(2);
+    expect(form.interactions.length).toBe(2);
   });
 
   it('saves exchange text to SquareRepository', function() {
