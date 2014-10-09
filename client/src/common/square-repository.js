@@ -12,7 +12,7 @@ angular.module('app').factory('SquareRepository', function() {
  return {
 
   save: function(form) {
-    square = form.square;
+    square.interactions = form.interactions;
   },
 
   getSquare: function() {

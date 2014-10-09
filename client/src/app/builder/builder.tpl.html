@@ -16,8 +16,8 @@
     <p>{{what}}</p>
     <form>
       <div ng-repeat="interaction in form.interactions">
-        <input type="text" class="xdTextBox" ng-model="interaction.question" placeholder="{{interaction[0]}}"/><br>
-        <input type="text" class="xdTextBox" ng-model="interaction.answer" placeholder="{{interaction[1]}}"/><br>
+        <input type="text" class="xdTextBox" ng-model="interaction.question.text" placeholder="{{interaction[0]}}"/><br>
+        <input type="text" class="xdTextBox" ng-model="interaction.answer.text" placeholder="{{interaction[1]}}"/><br>
         <br>
       </div>
       <button ng-click="submit(form)">Submit</button>
