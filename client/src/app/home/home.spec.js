@@ -46,8 +46,13 @@ describe('HomeCtrl', function () {
     // });
 
     describe('when the game player page is loaded', function () {
-        it('loads the square', function () {
+        it('loads the first square', function () {
             sinon.assert.calledOnce(mockSquareRepository.getSquare);
+        });
+
+        it('loads all squares for the first lap', function () {
+            // iterates through all the squares in SquareRepository
+            // and displays them in player.
         });
     });
 
