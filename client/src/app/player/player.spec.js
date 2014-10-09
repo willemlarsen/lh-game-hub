@@ -4,18 +4,18 @@
  * build process will exclude all `.spec.js` files from the build
  * automatically.
  */
-// describe( 'home section', function() {
-//   beforeEach( module( 'app.home' ) );
+// describe( 'player section', function() {
+//   beforeEach( module( 'app.player' ) );
 
 //   it( 'should have a dummy test', inject( function() {
 //     expect( true ).toBeTruthy();
 //   }));
 // });
 
-describe('HomeCtrl', function () {
+describe('PlayerCtrl', function () {
   var   scope,
         mockSquareRepository,
-        home = ["home"];
+        player = ["player"];
 
     beforeEach(function () {
         module("app");
@@ -26,7 +26,7 @@ describe('HomeCtrl', function () {
             // mockFirebase = sinon.stub($firebase);
             mockSquareRepository = sinon.stub(SquareRepository);
 
-            $controller("HomeCtrl", {
+            $controller("PlayerCtrl", {
                 $scope: scope
                 // firebase: mockFirebase
             });

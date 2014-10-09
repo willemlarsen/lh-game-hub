@@ -1,14 +1,14 @@
 angular.module( 'app', [
   'templates-app',
   'templates-common',
-  'app.home',
+  'app.player',
   'app.builder',
   'app.about',
   'ui.router'
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
-  $urlRouterProvider.otherwise( '/home' );
+  $urlRouterProvider.otherwise( '/player' );
 })
 
 .run( function run () {
