@@ -1,18 +1,22 @@
-<div ng-controller='LanguageCtrl'>
- <span ng-hide="editing" ng-click="editing = true">
-    <h2>Language: {{languageChoice}}</h2>
-    <h2 >Dialect: {{dialect}}</h2>
-    <h2>Progression: {{progression}}</h2>
-    <h2>Variant: {{variant}}</h2>
- </span>
-  <form ng-hide="editing" ng-click="editing = true">
-    <label>Language:</label>
-    <input type="text" ng-model="languageChoice" ng-required/>
-    <label>Date:</label>
-    <input type="text" ng-model="dialect" placeholder="dialect" ng-required/>
-    <input type="text" ng-model="progression" ng-required/>
-    <input type="text" ng-model="variant" ng-required/>
 
-    <button ng-click='submit()'>Submit</button>
+<div ng-controller='LanguageCtrl'>
+  <ul ng-hide="editing" ng-click="editing = true">
+    <li>Language: {{languageChoice}}</li>
+    <li>Dialect: {{dialect}}</li>
+    <li>Progression: {{progression}}</li>
+    <li>Variant: {{variant}}</li>
+  </ul>
+  <form ng-show="editing" ng-submit="submit()">
+    <label>Language:</label>
+    <input type="text" ng-model="languageChoice" ng-required autofocus/>
+    <br/>
+    <label>Dialect:</label>
+    <input type="text" ng-model="dialect" placeholder="dialect" ng-required/>
+    <br/>
+    <input type="text" ng-model="progression" ng-required/>
+    <br/>
+    <input type="text" ng-model="variant" ng-required/>
+    <br/>
+    <input type="submit" id="submit" value="Submit"/>
   </form>
 </div>

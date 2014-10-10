@@ -16,15 +16,18 @@ angular.module('app.language', [
  })
 
 .controller('LanguageCtrl', function LanguageController($scope, Session) {
-    $scope.languageChoice = Session.languageChoice;
-    $scope.dialect = Session.dialect;
-    $scope.progression = Session.progression;
-    $scope.variant = Session.variant;
+  $scope.editing = false;
 
-    $scope.submit = function() {
-        Session.languageChoice = $scope.languageChoice;
-        Session.dialect = $scope.dialect;
-    };
+  $scope.languageChoice = Session.languageChoice;
+  $scope.dialect = Session.dialect;
+  $scope.progression = Session.progression;
+  $scope.variant = Session.variant;
+
+  $scope.submit = function() {
+    Session.languageChoice = $scope.languageChoice;
+    Session.dialect = $scope.dialect;
+    $scope.editing = false;
+  };
 })
 
 ;
