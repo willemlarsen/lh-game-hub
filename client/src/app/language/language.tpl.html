@@ -1,21 +1,21 @@
 
 <div ng-controller='LanguageCtrl'>
   <ul ng-hide="editing" ng-click="editing = true">
-    <li>Language: {{languageChoice}}</li>
-    <li>Dialect: {{dialect}}</li>
-    <li>Progression: {{progression}}</li>
-    <li>Variant: {{variant}}</li>
+    <li>Language: {{language.name}}</li>
+    <li>Dialect: {{language.dialect}}</li>
+    <li>Progression: {{language.progression}}</li>
+    <li>Variant: {{language.variant}}</li>
   </ul>
   <form ng-show="editing" ng-submit="submit()">
     <label>Language:</label>
-    <input type="text" ng-model="languageChoice" ng-required autofocus/>
+    <input type="text" ng-model="language.name" ng-required autofocus/>
     <br/>
     <label>Dialect:</label>
-    <input type="text" ng-model="dialect" placeholder="dialect" ng-required/>
+    <input type="text" ng-model="language.dialect" placeholder="dialect" ng-required/>
     <br/>
-    <input type="text" ng-model="progression" ng-required/>
+    <input type="text" ng-model="language.progression" ng-required/>
     <br/>
-    <input type="text" ng-model="variant" ng-required/>
+    <input type="text" ng-model="language.variant" ng-required/>
     <br/>
     <input type="submit" id="submit" value="Submit"/>
   </form>
