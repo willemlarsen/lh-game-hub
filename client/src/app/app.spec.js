@@ -17,15 +17,15 @@ describe( 'AppCtrl', function() {
   });
 });
 
-describe( 'Session', function() {
+describe( 'session', function() {
   var session;
 
   beforeEach( module( 'app' ) );
 
   describe( 'create', function() {
 
-    beforeEach( inject( function( _Session_ ) {
-      session = _Session_;
+    beforeEach( inject( function( _session_ ) {
+      session = _session_;
     }));
 
 

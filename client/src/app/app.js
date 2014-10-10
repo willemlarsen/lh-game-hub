@@ -23,7 +23,7 @@ angular.module( 'app', [
   });
 })
 
-.service('Session', function () {
+.service('session', function () {
   this.setLanguage = function (language) {
     this.language = language;
   };
