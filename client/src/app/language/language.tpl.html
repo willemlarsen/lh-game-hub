@@ -1,0 +1,18 @@
+<div ng-controller='LanguageCtrl'>
+ <span ng-hide="editing" ng-click="editing = true">
+    <h2>Language: {{languageChoice}}</h2>
+    <h2 >Dialect: {{dialect}}</h2>
+    <h2>Progression: {{progression}}</h2>
+    <h2>Variant: {{variant}}</h2>
+ </span>
+  <form ng-hide="editing" ng-click="editing = true">
+    <label>Language:</label>
+    <input type="text" ng-model="languageChoice" ng-required/>
+    <label>Date:</label>
+    <input type="text" ng-model="dialect" placeholder="dialect" ng-required/>
+    <input type="text" ng-model="progression" ng-required/>
+    <input type="text" ng-model="variant" ng-required/>
+
+    <button ng-click='submit()'>Submit</button>
+  </form>
+</div>
