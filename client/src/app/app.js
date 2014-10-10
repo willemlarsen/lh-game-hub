@@ -23,12 +23,9 @@ angular.module( 'app', [
   });
 })
 
-.service('Session', function () {
-  this.create = function (languageChoice, dialect, progression, variant) {
-    this.languageChoice = languageChoice;
-    this.dialect = dialect;
-    this.progression = progression;
-    this.variant = variant;
+.service('session', function () {
+  this.setLanguage = function (language) {
+    this.language = language;
   };
 
   return this;

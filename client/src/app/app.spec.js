@@ -1,4 +1,5 @@
 describe( 'AppCtrl', function() {
+
   describe( 'isCurrentUrl', function() {
     var AppCtrl, $location, $scope;
 
@@ -14,4 +15,32 @@ describe( 'AppCtrl', function() {
       expect( AppCtrl ).toBeTruthy();
     }));
   });
+});
+
+describe( 'session', function() {
+  var session;
+
+  beforeEach( module( 'app' ) );
+
+  describe( 'create', function() {
+
+    beforeEach( inject( function( _session_ ) {
+      session = _session_;
+    }));
+
+
+    it( 'initalizes language', function() {
+      var language = {
+        name: 'Irish',
+        dialect: 'Conamara',
+        progression: 'Simple',
+        variant: "Brien's accent"
+      };
+      session.setLanguage(language);
+      expect(session.language).toEqual(language);
+    });
+
+  });
+
+
 });
