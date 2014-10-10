@@ -1,28 +1,22 @@
 <div >
   <h1>Builder</h1>
 </div>
+<language/>
+<h2>Lap: </h2>
+<ul>
+  <li>Constraint: {{constraint}}</li>
+  <li>Props: {{props}}</li>
+</ul>
 <div>
-  <h2>Language: Irish</h2>
-  <h2>Dialect: Conemara</h2>
-  <h2>Progression: Easy style</h2>
-  <h2>Variant: Brían's Irish</h2>
-  <h2>Lap: </h2>
-  <ul>
-    <li>Constraint:</li>
-    <li>Props:</li>
-  </ul>
-  <div>
-    <h2>What?</h2>
-    <p>{{what}}</p>
-    <form>
-      <div ng-repeat="interaction in form.interactions">
-        <input type="text" class="xdTextBox" ng-model="interaction.question.text" placeholder="{{interaction[0]}}"/><br>
-        <input type="text" class="xdTextBox" ng-model="interaction.answer.text" placeholder="{{interaction[1]}}"/><br>
-        <br>
-      </div>
-      <button ng-click="submit(form)">Submit</button>
-      <button ng-click="addFields(form)">Add</button>
-      <hr>
-    </form>
-  </div>
+  <h2>{{square}}</h2>
+  <form>
+    <div ng-repeat="interaction in form.interactions">
+      <input type="text" class="xdTextBox" ng-model="interaction.question.text" placeholder="{{interaction[0]}}"/><br>
+      <input type="text" class="xdTextBox" ng-model="interaction.answer.text" placeholder="{{interaction[1]}}"/><br>
+      <br>
+    </div>
+    <button ng-click="submit(form)">Submit</button>
+    <button ng-click="addFields(form)">Add</button>
+    <hr>
+  </form>
 </div>

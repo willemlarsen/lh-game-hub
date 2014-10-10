@@ -4,6 +4,7 @@ angular.module( 'app', [
   'app.player',
   'app.builder',
   'app.about',
+  'app.language',
   'ui.router'
 ])
 
