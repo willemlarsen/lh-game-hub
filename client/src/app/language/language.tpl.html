@@ -7,15 +7,13 @@
     <li>Variant: {{language.variant}}</li>
   </ul>
   <form ng-show="editing" ng-submit="submit()">
-    <label>Language:</label>
-    <input type="text" ng-model="language.name" ng-required autofocus/>
+    <input type="text" ng-model="language.name" placeholder="language" ng-required autofocus/>
     <br/>
-    <label>Dialect:</label>
     <input type="text" ng-model="language.dialect" placeholder="dialect" ng-required/>
     <br/>
-    <input type="text" ng-model="language.progression" ng-required/>
+    <input type="text" ng-model="language.progression" placeholder="progression" ng-required/>
     <br/>
-    <input type="text" ng-model="language.variant" ng-required/>
+    <input type="text" ng-model="language.variant" placeholder="variant" ng-required/>
     <br/>
     <input type="submit" id="submit" value="Submit"/>
   </form>
