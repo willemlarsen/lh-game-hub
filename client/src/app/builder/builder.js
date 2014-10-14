@@ -18,7 +18,7 @@ angular.module('app.builder', [
  });
 })
 
-.controller('BuilderCtrl', function BuilderController($scope, $firebase, SquareRepository) {
+.controller('BuilderCtrl', function BuilderController($scope, $firebase, LanguageRepository, SquareRepository) {
 
   $scope.form  = { 'interactions': [ [] ] };
 
@@ -28,6 +28,7 @@ angular.module('app.builder', [
 
   $scope.submit = function(form) {
     SquareRepository.save(form);
+    LanguageRepository.save();
   };
 
 
