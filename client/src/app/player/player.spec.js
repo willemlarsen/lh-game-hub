@@ -10,12 +10,10 @@ describe('PlayerCtrl', function () {
         inject(function ($rootScope, $controller, SquareRepository) {
             scope = $rootScope.$new();
 
-            // mockFirebase = sinon.stub($firebase);
             mockSquareRepository = sinon.stub(SquareRepository);
 
             $controller("PlayerCtrl", {
                 $scope: scope
-                // firebase: mockFirebase
             });
 
         });
