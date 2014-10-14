@@ -2,15 +2,17 @@
 describe('PlayerCtrl', function () {
   var   scope,
   mockSquareRepository,
+  mockLanguageRepository,
   player = ["player"];
 
   beforeEach(function () {
     module("app");
 
-    inject(function ($rootScope, $controller, SquareRepository) {
+    inject(function ($rootScope, $controller, LanguageRepository, SquareRepository) {
       scope = $rootScope.$new();
 
       mockSquareRepository = sinon.stub(SquareRepository);
+      mockLanguageRepository = sinon.stub(LanguageRepository);
 
       $controller("PlayerCtrl", {
         $scope: scope
@@ -20,6 +22,11 @@ describe('PlayerCtrl', function () {
   });
 
   describe('when the game player page is loaded', function () {
+
+    it('the language options are loaded', function () {
+      sinon.assert.calledOnce(mockLanguageRepository.getLanguages);
+    });
+
 
     it('loads the first square', function () {
       sinon.assert.calledOnce(mockSquareRepository.getSquare);

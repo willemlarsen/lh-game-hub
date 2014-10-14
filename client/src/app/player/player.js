@@ -39,7 +39,7 @@ angular.module( 'app.player', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'PlayerCtrl', function PlayerController( $scope, SquareRepository ) {
+.controller( 'PlayerCtrl', function PlayerController( $scope, LanguageRepository, SquareRepository ) {
   // var ref = new Firebase("https://languagehuntgamehub.firebaseio.com");
   // create an AngularFire reference to the data
   // var sync = $firebase(ref);
@@ -47,7 +47,7 @@ angular.module( 'app.player', [
   // var syncObject = sync.$asObject();
 
   $scope.square = SquareRepository.getSquare();
-
+  $scope.languages = LanguageRepository.getLanguages();
   // syncObject.$bindTo($scope, "game");
 
   // $scope.audio_path = function (path, filename) { return path + filename; };
