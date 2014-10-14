@@ -22,6 +22,8 @@ angular.module('app.builder', [
 
   $scope.form  = { 'interactions': [ [] ] };
 
+  $scope.languages = LanguageRepository.getLanguages();
+
   $scope.addFields = function(form) {
     form.interactions.push([]);
   };

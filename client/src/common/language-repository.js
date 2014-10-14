@@ -1,6 +1,7 @@
 
-angular.module('app').factory('LanguageRepository', function(session) {
+angular.module('app').factory('LanguageRepository', function(session, $firebase) {
 
+    var ref = new Firebase("https://languagehuntgamehub.firebaseio.com/languages/");
 
 
  return {
@@ -9,11 +10,9 @@ angular.module('app').factory('LanguageRepository', function(session) {
   },
 
   getLanguages: function() {
-   var ref = new Firebase("https://languagehuntgamehub.firebaseio.com/languages");
-   var sync = $firebase(ref);
-
-   var languages = sync.$asArray();
-   return languages;
+    var sync = $firebase(ref);
+    var languages = sync.$asObject();
+    return languages;
   }
 
  };
