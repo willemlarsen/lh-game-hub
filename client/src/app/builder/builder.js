@@ -18,7 +18,7 @@ angular.module('app.builder', [
  });
 })
 
-.controller('BuilderCtrl', function BuilderController($scope, $firebase, LanguageRepository, SquareRepository) {
+.controller('BuilderCtrl', function BuilderController($scope, LanguageRepository, SquareRepository) {
 
   $scope.form  = { 'interactions': [ [] ] };
 
