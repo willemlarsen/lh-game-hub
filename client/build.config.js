@@ -68,7 +68,8 @@ module.exports = {
       'vendor/angular-ui-router/release/angular-ui-router.js',
       'vendor/angular-ui-utils/modules/route/route.js',
       'vendor/angularfire/dist/angularfire.min.js',
-      'vendor/firebase/firebase.js'
+      'vendor/firebase/firebase.js',
+      'vendor/underscore/underscore.js'
     ],
     css: [
     ],
