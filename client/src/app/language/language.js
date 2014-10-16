@@ -29,6 +29,12 @@ angular.module('app.language', [
   }
 
   $scope.$watch('language.name', function () {
+    if (! _.isEmpty( $scope.language.name ) ) {
+      LanguageRepository.getLanguage($scope.language.name)
+      .then(function(language) {
+        $scope.language = language;
+      });
+    }
     // Todo Initialize session.language from repository
     // now that we know the language we are dealing with
   });
