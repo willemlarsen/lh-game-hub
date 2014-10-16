@@ -17,13 +17,20 @@ angular.module('app.language', [
 
 .controller('LanguageCtrl', function LanguageController($scope, session, LanguageRepository) {
 
+  LanguageRepository.getLanguages().then(function(languages) {
+    $scope.languages = languages;
+  });
+
   $scope.editing = false;
   $scope.language = session.language;
 
-  $scope.languageChoice = 'spanish';
+  if (! $scope.language) {
+    $scope.language = { name: '' };
+  }
 
-  LanguageRepository.getLanguages().then(function(languages) {
-    $scope.languages = languages;
+  $scope.$watch('language.name', function () {
+    // Todo Initialize session.language from repository
+    // now that we know the language we are dealing with
   });
 
   $scope.submit = function() {

@@ -7,7 +7,9 @@
     <li>Variant: {{language.variant}}</li>
   </ul>
   <form ng-show="editing" ng-submit="submit()">
-    <input type="text" ng-model="language.name" placeholder="language" ng-required autofocus/>
+    <select ng-model="language.name" ng-options="language for language in languages">
+      <option value="">--choose language--</option>
+    </select>
     <br/>
     <input type="text" ng-model="language.dialect" placeholder="dialect" ng-required/>
     <br/>
@@ -19,22 +21,3 @@
   </form>
 </div>
 
-<span class="dropdown" on-toggle="toggled(open)">
-  <a ng-href class="dropdown-toggle">
-    <span ng-if="language">
-      {{language.name}}
-    </span>
-    <span ng-if="! language">
-      Language
-    </span>
-  </a>
-  <ul class="dropdown-menu">
-    <li ng-repeat="language in languages">
-    <a href>{{language}}</a>
-    </li>
-  </ul>
-</span>
-
-<select ng-model="languageChoice" ng-options="language for language in languages">
-  <option value="">-- choose language--</option>
-</select>
