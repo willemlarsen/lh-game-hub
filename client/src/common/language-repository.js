@@ -23,3 +23,4 @@ angular.module('app').factory('LanguageRepository', function(session, $q, $fireb
  };
 
 });
+

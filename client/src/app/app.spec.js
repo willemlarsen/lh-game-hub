@@ -29,7 +29,7 @@ describe( 'session', function() {
     }));
 
 
-    it( 'initalizes language', function() {
+    it( 'initializes language', function() {
       var language = {
         name: 'Irish',
         dialect: 'Conamara',
