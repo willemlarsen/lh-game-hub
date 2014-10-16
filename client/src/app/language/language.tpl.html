@@ -18,3 +18,23 @@
     <input type="submit" id="submit" value="Submit"/>
   </form>
 </div>
+
+<span class="dropdown" on-toggle="toggled(open)">
+  <a ng-href class="dropdown-toggle">
+    <span ng-if="language">
+      {{language.name}}
+    </span>
+    <span ng-if="! language">
+      Language
+    </span>
+  </a>
+  <ul class="dropdown-menu">
+    <li ng-repeat="language in languages">
+    <a href>{{language}}</a>
+    </li>
+  </ul>
+</span>
+
+<select ng-model="languageChoice" ng-options="language for language in languages">
+  <option value="">-- choose language--</option>
+</select>

@@ -19,6 +19,9 @@ angular.module('app.language', [
 
   $scope.editing = false;
   $scope.language = session.language;
+
+  $scope.languageChoice = 'spanish';
+
   LanguageRepository.getLanguages().then(function(languages) {
     $scope.languages = languages;
   });
