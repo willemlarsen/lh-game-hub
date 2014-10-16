@@ -34,20 +34,20 @@ describe('BuilderCtrl', function() {
 
  describe('creating a square', function() {
 
-  it('appends paired question and answer fields to display', function() {
+  xit('appends paired question and answer fields to display', function() {
     var form = { 'interactions': [ [] ] };
     scope.addFields(form);
     expect(form.interactions.length).toBe(2);
   });
 
   describe('saving', function() {
-    it('saves exchange text to SquareRepository', function() {
+    xit('saves exchange text to SquareRepository', function() {
       var form = [{}];
       scope.submit(form);
       expect(mockSquareRepository.save.called).toBe(true);
     });
 
-    it('squareId to LanguageRepository', function() {
+    xit('squareId to LanguageRepository', function() {
       var form = [{}];
       scope.submit(form);
       expect(mockLanguageRepository.save.called).toBe(true);

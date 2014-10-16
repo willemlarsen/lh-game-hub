@@ -22,7 +22,9 @@ angular.module('app.builder', [
 
   $scope.form  = { 'interactions': [ [] ] };
 
-  $scope.languages = LanguageRepository.getLanguages();
+  LanguageRepository.getLanguages().then(function(languages) {
+    $scope.languages = _.sortBy(languages, _.identy);
+  });
 
   $scope.addFields = function(form) {
     form.interactions.push([]);

@@ -4,7 +4,10 @@
 <language>
 </language>
 <h2>Lap: </h2>
-{{languages}}
+<ul>
+  <li ng-repeat="language in languages"> {{language}} </li>
+</ul>
+<hr/>
 <ul>
   <li>Constraint: {{constraint}}</li>
   <li>Props: {{props}}</li>
