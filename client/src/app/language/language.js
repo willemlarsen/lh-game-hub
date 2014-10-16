@@ -15,15 +15,19 @@ angular.module('app.language', [
   };
  })
 
-.controller('LanguageCtrl', function LanguageController($scope, session) {
-  $scope.editing = false;
+.controller('LanguageCtrl', function LanguageController($scope, session, LanguageRepository) {
 
+  $scope.editing = false;
   $scope.language = session.language;
+  LanguageRepository.getLanguages().then(function(languages) {
+    $scope.languages = languages;
+  });
 
   $scope.submit = function() {
     session.setLanguage($scope.language);
     $scope.editing = false;
   };
+
 })
 
 ;
