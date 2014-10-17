@@ -1,17 +1,22 @@
 describe('BuilderCtrl', function() {
  var scope,
   mockSquareRepository,
+  deferredLanguages,
+  deferredSquare,
   mockLanguageRepository,
   builder = ["builder"];
 
  beforeEach(function() {
   module("app");
 
-  inject(function($rootScope, $controller, LanguageRepository, SquareRepository) {
+  inject(function($rootScope, $q, $controller, LanguageRepository, SquareRepository) {
    scope = $rootScope.$new();
 
    mockLanguageRepository = sinon.stub(LanguageRepository);
+   deferredLanguages = $q.defer();
+   deferredSquare = $q.defer();
    mockSquareRepository = sinon.stub(SquareRepository);
+   mockLanguageRepository.getLanguages.returns(deferredLanguages.promise);
 
    $controller("BuilderCtrl", {
     $scope: scope
@@ -34,20 +39,28 @@ describe('BuilderCtrl', function() {
 
  describe('creating a square', function() {
 
-  xit('appends paired question and answer fields to display', function() {
+    beforeEach(function() {
+      deferredLanguages.resolve();
+      deferredSquare.resolve();
+      scope.$apply();
+    });
+
+
+
+  it('appends paired question and answer fields to display', function() {
     var form = { 'interactions': [ [] ] };
     scope.addFields(form);
     expect(form.interactions.length).toBe(2);
   });
 
   describe('saving', function() {
-    xit('saves exchange text to SquareRepository', function() {
+    it('saves exchange text to SquareRepository', function() {
       var form = [{}];
       scope.submit(form);
       expect(mockSquareRepository.save.called).toBe(true);
     });
 
-    xit('squareId to LanguageRepository', function() {
+    it('squareId to LanguageRepository', function() {
       var form = [{}];
       scope.submit(form);
       expect(mockLanguageRepository.save.called).toBe(true);
