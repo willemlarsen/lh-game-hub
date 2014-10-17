@@ -3,27 +3,26 @@ angular.module('app').factory('LanguageRepository', function(session, $q, $fireb
 
     var ref = new Firebase("https://languagehuntgamehub.firebaseio.com/");
 
+    var retrieveChild = function(child) {
+        var deferred = $q.defer();
+        var languageRef = ref.child(child);
+        languageRef.once('value', function(data) {
+          deferred.resolve( data.val() );
+        });
+        return deferred.promise;
+    };
+
     return {
 
       save: function() {
       },
 
       getLanguages: function() {
-        var deferred = $q.defer();
-        var languageRef = ref.child('languages');
-        languageRef.once('value', function(data) {
-          deferred.resolve( data.val() );
-        });
-        return deferred.promise;
+        return retrieveChild('languages');
       },
 
       getLanguage: function (language) {
-        var deferred = $q.defer();
-        var languageRef = ref.child(language);
-        languageRef.once('value', function(data) {
-          deferred.resolve( data.val() );
-        });
-        return deferred.promise;
+        return retrieveChild(language);
       }
 
  };
