@@ -5,44 +5,44 @@ describe('LanguageCtrl', function() {
   deferredLanguages,
   mockLanguageRepository;
 
- beforeEach(function() {
-  module("app");
+  beforeEach(function() {
+    module("app");
 
-  inject(function($rootScope, $controller, LanguageRepository, $q) {
+    inject(function($rootScope, $controller, LanguageRepository, $q) {
 
-    language = ["language"];
+      language = ["language"];
 
-    scope = $rootScope.$new();
+      scope = $rootScope.$new();
 
-    mockLanguageRepository = sinon.stub(LanguageRepository);
-    deferredLanguages = $q.defer();
-    mockLanguageRepository.getLanguages.returns(deferredLanguages.promise);
+      mockLanguageRepository = sinon.stub(LanguageRepository);
+      deferredLanguages = $q.defer();
+      mockLanguageRepository.getLanguages.returns(deferredLanguages.promise);
 
-    $controller("LanguageCtrl", {
-      $scope: scope,
-      LanguageRepository: mockLanguageRepository
+      $controller("LanguageCtrl", {
+        $scope: scope,
+        LanguageRepository: mockLanguageRepository
+      });
+
     });
 
   });
 
- });
+  describe('when the controller first loads', function() {
+    var languages = [ 'Engrish', 'Spanglish' ];
 
- describe('when the controller first loads', function() {
-   var languages = [ 'Engrish', 'Spanglish' ];
+    beforeEach(function() {
+      deferredLanguages.resolve(languages);
+      scope.$apply();
+    });
 
-   beforeEach(function() {
-     deferredLanguages.resolve(languages);
-     scope.$apply();
-   });
+    it ('gets all the languages options', function() {
+      sinon.assert.calledOnce(mockLanguageRepository.getLanguages);
+    });
 
-   it ('gets all the languages options', function() {
-     sinon.assert.calledOnce(mockLanguageRepository.getLanguages);
-   });
+    it ('languages are loaded into scope', function() {
+      expect(scope.languages).toBe(languages);
+    });
 
-   it ('languages are loaded into scope', function() {
-     expect(scope.languages).toBe(languages);
-   });
-
- });
+  });
 
 });

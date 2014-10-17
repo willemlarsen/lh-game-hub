@@ -3,17 +3,17 @@ angular.module('app.language', [
   'firebase'
 ])
 
- .directive('language', function() {
+.directive('language', function() {
   return {
-   restrict: 'E', //E = element, A = attribute, C = class, M = comment
+    restrict: 'E', //E = element, A = attribute, C = class, M = comment
     scope: {
-    //@ reads the attribute value, = provides two-way binding, & works with functions
-    title: '@'
-   },
-   templateUrl: "language/language.tpl.html",
-   controller: 'LanguageCtrl' //Embed a custom controller in the directive
+      //@ reads the attribute value, = provides two-way binding, & works with functions
+      title: '@'
+    },
+    templateUrl: "language/language.tpl.html",
+    controller: 'LanguageCtrl' //Embed a custom controller in the directive
   };
- })
+})
 
 .controller('LanguageCtrl', function LanguageController($scope, session, LanguageRepository) {
 
