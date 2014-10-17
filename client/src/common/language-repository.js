@@ -23,7 +23,6 @@ angular.module('app').factory('LanguageRepository', function(session, $q, $fireb
         var languageRef = ref.child(language);
         ref.once('value', function(data) {
           var language = data.val();
-          deferred.resolve( language );
         });
         return deferred.promise;
       }
