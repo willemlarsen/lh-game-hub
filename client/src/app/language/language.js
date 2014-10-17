@@ -17,16 +17,20 @@ angular.module('app.language', [
 
 .controller('LanguageCtrl', function LanguageController($scope, session, LanguageRepository) {
 
+  var getLanguage = function (session) {
+    var lang = session.language;
+    if (! lang ) {
+      lang = { name: '' };
+    }
+    return lang;
+  };
+
   LanguageRepository.getLanguages().then(function(languages) {
     $scope.languages = languages;
   });
 
+  $scope.language = getLanguage(session);
   $scope.editing = false;
-  $scope.language = session.language;
-
-  if (! $scope.language) {
-    $scope.language = { name: '' };
-  }
 
   $scope.$watch('language.name', function () {
     if (! _.isEmpty( $scope.language.name ) ) {
@@ -35,8 +39,6 @@ angular.module('app.language', [
         $scope.language = language;
       });
     }
-    // Todo Initialize session.language from repository
-    // now that we know the language we are dealing with
   });
 
   $scope.submit = function() {
