@@ -21,7 +21,7 @@ angular.module('app.language', [
     $scope.languages = languages;
   });
 
-  $scope.game = session.game;
+  $scope.game = session.getGame();
   $scope.editing = false;
 
   $scope.$watch('game.language', function () {
@@ -34,7 +34,7 @@ angular.module('app.language', [
   });
 
   $scope.submit = function() {
-    session.setLanguage($scope.game.language);
+    session.setGame( $scope.game );
     $scope.editing = false;
   };
 

@@ -29,15 +29,40 @@ describe( 'session', function() {
     }));
 
 
-    it( 'initializes game', function() {
+    it( 'initializes empty game', function() {
+      var game = {
+        language: '',
+        dialect: '',
+        progression: '',
+        variant: ""
+      };
+      expect(session.getGame()).toEqual(game);
+    });
+
+  });
+
+  describe( 'game', function() {
+
+    it( 'can be set and got', function() {
       var game = {
         language: 'Irish',
         dialect: 'Conamara',
         progression: 'Simple',
         variant: "Brien's accent"
       };
-      session.setLanguage(game.language);
-      expect(session.game.language).toEqual(game.language);
+      session.setGame(game);
+      expect(session.getGame()).toEqual(game);
+      expect(session.getGame()).not.toBe(game);
+    });
+
+    it( 'cannot be accessed directly', function() {
+      var game = {
+        language: 'Irish',
+        dialect: 'Conamara',
+        progression: 'Simple',
+        variant: "Brien's accent"
+      };
+      expect( session.game ).not.toBeDefined();
     });
 
   });

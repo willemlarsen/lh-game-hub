@@ -1,14 +1,16 @@
 
 describe('LanguageCtrl', function() {
   var scope,
+  session,
   deferredLanguages,
   mockLanguageRepository;
 
   beforeEach(function() {
     module("app");
 
-    inject(function($rootScope, $controller, LanguageRepository, $q) {
+    inject(function($rootScope, $q, $controller, LanguageRepository, _session_) {
       scope = $rootScope.$new();
+      session = _session_;
 
       mockLanguageRepository = sinon.stub(LanguageRepository);
       deferredLanguages = $q.defer();
@@ -40,10 +42,29 @@ describe('LanguageCtrl', function() {
     });
 
   });
+
   describe('when a language is selected', function() {
 
     it('allows user to select a dialect', function() {
-
     });
+
   });
+
+  describe('when submitting a game selection', function() {
+
+    it('the game is stored in session', function() {
+      var game = {
+        language: 'English',
+        dialect: 'Midwest',
+        progression: 'Easy',
+        variant : 'Zhon\'s Utah Accent'
+      };
+      mockSession = sinon.stub(session);
+      scope.submit();
+      sinon.assert.calledOnce(mockSession.setGame);
+    });
+
+  });
+
+
 });

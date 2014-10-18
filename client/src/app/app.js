@@ -24,16 +24,20 @@ angular.module( 'app', [
 })
 
 .factory('session', function () {
+  var game = {
+    language: '',
+    dialect: '',
+    progression: '',
+    variant: '',
+  };
+
   var session = {
-    game: {
-      language: '',
-      dialect: '',
-      progression: '',
-      variant: '',
+    setGame: function(_game_) {
+      game = _.clone(_game_);
     },
 
-    setLanguage: function(lang) {
-      this.game.language = lang;
+    getGame: function() {
+      return _.clone(game);
     }
   };
 
