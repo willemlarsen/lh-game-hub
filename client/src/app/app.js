@@ -23,12 +23,21 @@ angular.module( 'app', [
   });
 })
 
-.service('session', function () {
-  this.setLanguage = function (language) {
-    this.language = language;
+.factory('session', function () {
+  var session = {
+    game: {
+      language: '',
+      dialect: '',
+      progression: '',
+      variant: '',
+    },
+
+    setLanguage: function(lang) {
+      this.game.language = lang;
+    }
   };
 
-  return this;
+  return session;
 })
 
 ;

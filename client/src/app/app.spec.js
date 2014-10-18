@@ -29,15 +29,15 @@ describe( 'session', function() {
     }));
 
 
-    it( 'initializes language', function() {
-      var language = {
-        name: 'Irish',
+    it( 'initializes game', function() {
+      var game = {
+        language: 'Irish',
         dialect: 'Conamara',
         progression: 'Simple',
         variant: "Brien's accent"
       };
-      session.setLanguage(language);
-      expect(session.language).toEqual(language);
+      session.setLanguage(game.language);
+      expect(session.game.language).toEqual(game.language);
     });
 
   });

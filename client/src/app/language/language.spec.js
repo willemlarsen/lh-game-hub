@@ -1,7 +1,6 @@
 
 describe('LanguageCtrl', function() {
   var scope,
-  language,
   deferredLanguages,
   mockLanguageRepository;
 
@@ -9,9 +8,6 @@ describe('LanguageCtrl', function() {
     module("app");
 
     inject(function($rootScope, $controller, LanguageRepository, $q) {
-
-      language = ["language"];
-
       scope = $rootScope.$new();
 
       mockLanguageRepository = sinon.stub(LanguageRepository);
@@ -44,5 +40,10 @@ describe('LanguageCtrl', function() {
     });
 
   });
+  describe('when a language is selected', function() {
 
+    it('allows user to select a dialect', function() {
+
+    });
+  });
 });

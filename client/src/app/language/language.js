@@ -17,24 +17,16 @@ angular.module('app.language', [
 
 .controller('LanguageCtrl', function LanguageController($scope, session, LanguageRepository) {
 
-  var getLanguage = function (session) {
-    var lang = session.language;
-    if (! lang ) {
-      lang = { name: '' };
-    }
-    return lang;
-  };
-
   LanguageRepository.getLanguages().then(function(languages) {
     $scope.languages = languages;
   });
 
-  $scope.language = getLanguage(session);
+  $scope.game = session.game;
   $scope.editing = false;
 
-  $scope.$watch('language.name', function () {
-    if (! _.isEmpty( $scope.language.name ) ) {
-      LanguageRepository.getLanguage($scope.language.name)
+  $scope.$watch('game.language', function () {
+    if (! _.isEmpty( $scope.game.language ) ) {
+      LanguageRepository.getLanguage($scope.game.language)
       .then(function(language) {
         $scope.language = language;
       });
@@ -42,7 +34,7 @@ angular.module('app.language', [
   });
 
   $scope.submit = function() {
-    session.setLanguage($scope.language);
+    session.setLanguage($scope.game.language);
     $scope.editing = false;
   };
 

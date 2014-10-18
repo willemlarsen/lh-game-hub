@@ -7,15 +7,15 @@
     <li>Variant: {{language.variant}}</li>
   </ul>
   <form ng-show="editing" ng-submit="submit()">
-    <select ng-model="language.name" ng-options="language for language in languages">
+    <select ng-model="game.language" ng-options="language for language in languages">
       <option value="">--choose language--</option>
     </select>
     <br/>
-    <input type="text" ng-model="language.dialect" placeholder="dialect" ng-required/>
+    <input type="text" ng-model="game.dialect" placeholder="dialect" ng-required/>
     <br/>
-    <input type="text" ng-model="language.progression" placeholder="progression" ng-required/>
+    <input type="text" ng-model="game.progression" placeholder="progression" ng-required/>
     <br/>
-    <input type="text" ng-model="language.variant" placeholder="variant" ng-required/>
+    <input type="text" ng-model="game.variant" placeholder="variant" ng-required/>
     <br/>
     <input type="submit" id="submit" value="Submit"/>
   </form>
