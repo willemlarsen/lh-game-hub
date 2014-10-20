@@ -66,5 +66,46 @@ describe('LanguageCtrl', function() {
 
   });
 
+  describe('when selecting a game', function() {
+
+    describe('getLanguages()', function() {
+
+      it('will return empty list if language is not defined', function() {
+        scope.game = { language: '' };
+        expect(scope.getProgressions()).toEqual([]);
+      });
+
+      it('will return empty list if dialect is not defined', function() {
+        scope.game = {
+          language: 'English',
+          //dialect: 'Western',
+        };
+        expect(scope.getProgressions()).toEqual([]);
+      });
+
+      it('will retrieve available progressions', function() {
+        var progressions = [{ "Hard Irish": "progressionId" }];
+        scope.language = {
+          "English": {
+            "name":"English",
+            "dialects": ["Texas", 'Midwest'],
+            'Midwest': {
+              'progressions': progressions
+            }
+          }
+        };
+        scope.game = {
+          language: 'English',
+          dialect: 'Midwest',
+          progression: '',
+          variant : ''
+        };
+        expect(scope.getProgressions()).toEqual(progressions);
+      });
+
+    });
+
+
+  });
 
 });

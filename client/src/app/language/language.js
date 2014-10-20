@@ -24,6 +24,24 @@ angular.module('app.language', [
   $scope.game = session.getGame();
   $scope.editing = false;
 
+  $scope.getProgressions = function() {
+    var progressions = [];
+    if (!_.isEmpty($scope.language) && !_.isEmpty($scope.game.language) && !_.isEmpty($scope.game.dialect)) {
+      progressionObjs = $scope.language[$scope.game.dialect].progressions;
+      progressions = _.map(progressionObjs, function(item) { return _.toArray(item.key)[0]; });
+    }
+    return progressions;
+  };
+
+  $scope.$watch('game.language', function () {
+    if (! _.isEmpty( $scope.game.language ) ) {
+      LanguageRepository.getLanguage($scope.game.language)
+      .then(function(language) {
+        $scope.language = language;
+      });
+    }
+  });
+
   $scope.$watch('game.language', function () {
     if (! _.isEmpty( $scope.game.language ) ) {
       LanguageRepository.getLanguage($scope.game.language)
