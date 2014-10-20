@@ -45,7 +45,7 @@ describe('LanguageCtrl', function() {
 
   describe('when a language is selected', function() {
 
-    it('allows user to select a dialect', function() {
+    it('allows user to see dialect options', function() {
     });
 
   });

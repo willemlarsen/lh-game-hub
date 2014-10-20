@@ -1,17 +1,19 @@
 
 <div>
   <ul ng-hide="editing" ng-click="editing = true">
-    <li>Language: {{language.name}}</li>
-    <li>Dialect: {{language.dialect}}</li>
-    <li>Progression: {{language.progression}}</li>
-    <li>Variant: {{language.variant}}</li>
+    <li>Language: {{game.name}}</li>
+    <li>Dialect: {{game.dialect}}</li>
+    <li>Progression: {{game.progression}}</li>
+    <li>Variant: {{game.variant}}</li>
   </ul>
   <form ng-show="editing" ng-submit="submit()">
     <select ng-model="game.language" ng-options="language for language in languages">
       <option value="">--choose language--</option>
     </select>
     <br/>
-    <input type="text" ng-model="game.dialect" placeholder="dialect" ng-required/>
+    <select ng-model="game.dialect" ng-options="dialect for dialect in language.dialects">
+      <option value="">--choose dialect--</option>
+    </select>
     <br/>
     <input type="text" ng-model="game.progression" placeholder="progression" ng-required/>
     <br/>
