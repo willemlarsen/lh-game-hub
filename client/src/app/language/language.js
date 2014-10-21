@@ -32,6 +32,27 @@ angular.module('app.language', [
     }
     return [];
   };
+  $scope.canGetVariants = function() {
+    var elements = [$scope.language, $scope.game.language,
+                    $scope.game.dialect, $scope.game.progression];
+    return _.all(elements, function (item) { return !_.isEmpty(item); } );
+  };
+
+   $scope.getVariants = function() {
+    if (!$scope.canGetVariants()) { return []; }
+
+      var language = $scope.language,
+          dialect = language[$scope.game.dialect],
+          progressions = dialect.progressions,
+          theResultWeWant = (_.find(progressions, function (progression) {
+              return _.first(_.keys(progression)) === $scope.game.progression;
+            })),
+          progression = theResultWeWant,
+          progressionId = _.first(_.values(progression)),
+          variants = language[progressionId].variants;
+
+       return _.map(variants, function(item){  return _.first(_.keys(item)); });
+  };
 
   $scope.$watch('game.language', function () {
     if (! _.isEmpty( $scope.game.language ) ) {
