@@ -23,6 +23,7 @@ angular.module('app.language', [
 
   $scope.game = session.getGame();
   $scope.editing = false;
+  $scope.progressions = [];
 
   $scope.getProgressions = function() {
     if (!_.isEmpty($scope.language) && !_.isEmpty($scope.game.language) && !_.isEmpty($scope.game.dialect)) {
@@ -42,7 +43,7 @@ angular.module('app.language', [
   });
 
   $scope.$watch('game.dialect', function() {
-
+    $scope.progressions = $scope.getProgressions();
   });
 
   $scope.submit = function() {
