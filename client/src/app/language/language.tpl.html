@@ -15,15 +15,16 @@
       <option value="">--choose dialect--</option>
     </select>
     <br/>
-    <select ng-model="game.progression" ng-options="progresson for progression in getProgressions()">
+    <select ng-model="game.progression" ng-options="progression for progression in progressions">
       <option value="">--choose progression--</option>
     </select>
-    <input type="text" ng-model="game.progression" placeholder="progression" ng-required/>
     <br/>
+    <select ng-model="game.variant" ng-options="variant for variant in variants">
+      <option value="">--choose variant--</option>
+    </select>
     <input type="text" ng-model="game.variant" placeholder="variant" ng-required/>
     <br/>
     <input type="submit" id="submit" value="Submit"/>
   </form>
-  '{{$scope.getProgressions();}}'
 </div>
 
