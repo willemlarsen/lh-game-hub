@@ -84,7 +84,7 @@ describe('LanguageCtrl', function() {
       });
 
       it('will retrieve available progressions', function() {
-        var progressions = [ { "Hard Irish": "progressionId"}, {"Easy Irish": "id2"} ];
+        var progressions = [ { "Hard Midwest": "progressionId"}, {"Easy Midwest": "id2"} ];
         var progressionKeys = _.map(progressions, function(item){  return _.first(_.keys(item)); });
         scope.language = {
             "name":"English",
@@ -102,6 +102,38 @@ describe('LanguageCtrl', function() {
 
         expect(scope.getProgressions()).toEqual(progressionKeys);
       });
+      it('will return empty list of variants if progression is not defined', function() {
+        scope.game = {
+          variants: []
+        };
+        expect(scope.getVariants()).toEqual([]);
+      });
+
+      it('returns the available variants for a given progression', function() {
+      var progressions = [ { "Hard Midwest": "progressionId"}, {"Easy Midwest": "id2"} ];
+      var variantKeys = ["Rural Midwest", "Urban Midwest"];
+        scope.language = {
+            "name":"English",
+            "dialects": ["Texas", 'Midwest'],
+            'Midwest': {
+              'progressions': progressions
+            },
+            "progressionId": {
+              'variants': [
+              { "Rural Midwest": "variantId" },
+              { "Urban Midwest": "variantId2" }
+              ]
+            }
+        };
+        scope.game = {
+          language: 'English',
+          dialect: 'Midwest',
+          progression: "Hard Midwest",
+          variant : ''
+        };
+        expect(scope.getVariants()).toEqual(variantKeys);
+      });
+
 
     });
 
