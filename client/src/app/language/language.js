@@ -25,14 +25,19 @@ angular.module('app.language', [
   $scope.editing = false;
 
   $scope.getProgressions = function() {
-    var progressions = [];
+    var progressionKeys = [];
     if (!_.isEmpty($scope.language) && !_.isEmpty($scope.game.language) && !_.isEmpty($scope.game.dialect)) {
-      var progressionObjs;
       var gameLanguage = $scope.game.language;
       var gameDialect = $scope.game.dialect;
-      progressions = $scope.language[gameLanguage][gameDialect].progressions;
+      var progressions = $scope.language[gameDialect].progressions;
+      for (var index = 0; index < progressions.length; index++) {
+        var progressionsObject = progressions[index];
+        for (var key in progressionsObject) {
+          progressionKeys.push(key);
+        }
+      }
     }
-    return progressions;
+    return progressionKeys;
   };
 
   $scope.$watch('game.language', function () {
@@ -44,13 +49,8 @@ angular.module('app.language', [
     }
   });
 
-  $scope.$watch('game.language', function () {
-    if (! _.isEmpty( $scope.game.language ) ) {
-      LanguageRepository.getLanguage($scope.game.language)
-      .then(function(language) {
-        $scope.language = language;
-      });
-    }
+  $scope.$watch('game.dialect', function() {
+
   });
 
   $scope.submit = function() {

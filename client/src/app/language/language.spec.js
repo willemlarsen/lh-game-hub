@@ -84,15 +84,14 @@ describe('LanguageCtrl', function() {
       });
 
       it('will retrieve available progressions', function() {
-        var progressions = [{ "Hard Irish": "progressionId" }];
+        var progressions = [ { "Hard Irish": "progressionId" } ];
+        var progressionKeys = ["Hard Irish"];
         scope.language = {
-          "English": {
             "name":"English",
             "dialects": ["Texas", 'Midwest'],
             'Midwest': {
               'progressions': progressions
             }
-          }
         };
         scope.game = {
           language: 'English',
@@ -101,8 +100,7 @@ describe('LanguageCtrl', function() {
           variant : ''
         };
 
-        console.log(scope.language.dialect);
-        expect(scope.getProgressions()).toEqual(progressions);
+        expect(scope.getProgressions()).toEqual(progressionKeys);
       });
 
     });
