@@ -84,8 +84,8 @@ describe('LanguageCtrl', function() {
       });
 
       it('will retrieve available progressions', function() {
-        var progressions = [ { "Hard Irish": "progressionId" } ];
-        var progressionKeys = ["Hard Irish"];
+        var progressions = [ { "Hard Irish": "progressionId"}, {"Easy Irish": "id2"} ];
+        var progressionKeys = _.map(progressions, function(item){  return _.first(_.keys(item)); });
         scope.language = {
             "name":"English",
             "dialects": ["Texas", 'Midwest'],
