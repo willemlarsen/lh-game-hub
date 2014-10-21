@@ -100,6 +100,8 @@ describe('LanguageCtrl', function() {
           progression: '',
           variant : ''
         };
+
+        console.log(scope.language.dialect);
         expect(scope.getProgressions()).toEqual(progressions);
       });
 

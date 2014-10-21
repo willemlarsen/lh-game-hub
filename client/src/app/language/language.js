@@ -27,8 +27,10 @@ angular.module('app.language', [
   $scope.getProgressions = function() {
     var progressions = [];
     if (!_.isEmpty($scope.language) && !_.isEmpty($scope.game.language) && !_.isEmpty($scope.game.dialect)) {
-      progressionObjs = $scope.language[$scope.game.dialect].progressions;
-      progressions = _.map(progressionObjs, function(item) { return _.toArray(item.key)[0]; });
+      var progressionObjs;
+      var gameLanguage = $scope.game.language;
+      var gameDialect = $scope.game.dialect;
+      progressions = $scope.language[gameLanguage][gameDialect].progressions;
     }
     return progressions;
   };
