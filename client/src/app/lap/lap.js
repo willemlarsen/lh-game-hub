@@ -20,6 +20,10 @@ angular.module('app.lap', [
 
   $scope.number = 1;
 
+  $scope.nextLap = function() {
+    $scope.number += 1;
+  };
+
 })
 
 ;

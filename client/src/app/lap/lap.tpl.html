@@ -1,11 +1,14 @@
 
 <div>
   <form>
-    <h1>Lap: {{number}}</h1> 
-    <h2>Constraint: {{constraint}}</h2>
+    <h1>Lap: {{number}}</h1>
+    <h2>Constraint:
+      <input type="text" ng-model="constraint">
+      {{constraint}}
+    </h2>
     <square></square>
-     <input type="button" id="nextLap" value="New Lap"/>
+    <input type="button" ng-click="nextLap()" id="nextLap" value="New Lap"/>
   </form>
-
 </div>
+
 
