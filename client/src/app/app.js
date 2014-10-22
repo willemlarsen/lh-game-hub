@@ -1,10 +1,11 @@
 angular.module( 'app', [
+  'app.about',
+  'app.builder',
+  'app.language',
+  'app.lap',
+  'app.player',
   'templates-app',
   'templates-common',
-  'app.player',
-  'app.builder',
-  'app.about',
-  'app.language',
   'ui.router'
 ])
 
