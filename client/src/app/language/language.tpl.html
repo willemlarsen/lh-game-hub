@@ -19,10 +19,9 @@
       <option value="">--choose progression--</option>
     </select>
     <br/>
-    <select ng-model="game.variant" ng-options="variant for variant in variants">
+    <select ng-model="game.variant" ng-options="variant for variant in getVariants()">
       <option value="">--choose variant--</option>
     </select>
-    <input type="text" ng-model="game.variant" placeholder="variant" ng-required/>
     <br/>
     <input type="submit" id="submit" value="Submit"/>
   </form>
