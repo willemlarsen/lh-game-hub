@@ -38,15 +38,20 @@ describe('LapCtrl', function() {
       var userInputConstraint = "First and Second Person Singular";
       expect(scope.constraint).toEqual(constraint);
     });
-    
+
   });
 
   describe('when ready for next Lap', function() {
+
     it('Increments Lap number by one', function() {
       scope.number = 1;
       scope.nextLap();
       expect(scope.number).toEqual(2);
     });
+
+    it('constraint field is cleared after saving to db', function() {
+    });
+
   });
 
 });
