@@ -30,6 +30,10 @@ describe('LapCtrl', function() {
       expect(scope.number).toEqual(1);
     });
 
+    xit('initializes the first square, "What"', function() {
+      expect(scope.square).toEqual('what');
+    });
+
     xit('Belongs to the variant', function() {
       //expect(scope.variant).toEqual(parent);
     });

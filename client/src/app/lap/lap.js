@@ -16,7 +16,7 @@ angular.module('app.lap', [
   };
 })
 
-.controller('LapCtrl', function LanguageController($scope, session, LanguageRepository) {
+.controller('LapCtrl', function LapController($scope, session, LanguageRepository) {
 
   $scope.number = 1;
 
