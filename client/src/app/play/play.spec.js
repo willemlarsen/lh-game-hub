@@ -1,17 +1,15 @@
 
 describe('PlayCtrl', function () {
   var   scope,
-  mockSquareRepository,
   mockGameRepository,
   play = ["play"];
 
   beforeEach(function () {
     module("app");
 
-    inject(function ($rootScope, $controller, GameRepository, SquareRepository) {
+    inject(function ($rootScope, $controller, GameRepository) {
       scope = $rootScope.$new();
 
-      mockSquareRepository = sinon.stub(SquareRepository);
       mockGameRepository = sinon.stub(GameRepository);
 
       $controller("PlayCtrl", {
@@ -29,7 +27,6 @@ describe('PlayCtrl', function () {
 
 
     it('loads the first square', function () {
-      sinon.assert.calledOnce(mockSquareRepository.getSquare);
     });
 
     it('loads all squares for the first lap', function () {

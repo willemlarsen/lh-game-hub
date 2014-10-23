@@ -21,7 +21,7 @@ angular.module('app.lap', [
   $scope.number = 1;
 
   $scope.nextLap = function() {
-    GameRepository.saveLap();
+    // GameRepository.createLap(constraint, );
     $scope.constraint = '';
     $scope.number += 1;
   };

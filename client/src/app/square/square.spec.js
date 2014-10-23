@@ -64,7 +64,7 @@ describe('SquareCtrl', function() {
 
     describe('saving', function() {
 
-      xit('saves exchange text to SquareRepository', function() {
+      xit('saves exchange text to ', function() {
         var form = [{}];
         scope.submit(form);
         sinon.assert.calledOnce(mockGameRepository.saveSquare);

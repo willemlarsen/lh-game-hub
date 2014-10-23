@@ -35,7 +35,6 @@ angular.module('app').factory('GameRepository', function(session, $q, $firebase)
     },
 
     saveLap: function (language) {
-
     },
 
     saveSquare: function (square) {

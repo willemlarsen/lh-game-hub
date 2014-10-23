@@ -39,14 +39,14 @@ angular.module( 'app.play', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'PlayCtrl', function PlayController( $scope, GameRepository, SquareRepository ) {
+.controller( 'PlayCtrl', function PlayController( $scope, GameRepository ) {
   // var ref = new Firebase("https://languagehuntgamehub.firebaseio.com");
   // create an AngularFire reference to the data
   // var sync = $firebase(ref);
 
   // var syncObject = sync.$asObject();
 
-  $scope.square = SquareRepository.getSquare();
+  // $scope.square = SquareRepository.getSquare();
   $scope.languages = GameRepository.getLanguages();
   // syncObject.$bindTo($scope, "game");
 

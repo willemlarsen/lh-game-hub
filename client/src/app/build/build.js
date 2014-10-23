@@ -18,7 +18,7 @@ angular.module('app.build', [
  });
 })
 
-.controller('BuildCtrl', function BuildController($scope, GameRepository, SquareRepository) {
+.controller('BuildCtrl', function BuildController($scope, GameRepository) {
 
   GameRepository.getLanguages().then(function(languages) {
     $scope.languages = _.sortBy(languages, _.identy);
