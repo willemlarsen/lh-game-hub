@@ -18,12 +18,23 @@ angular.module('app.square', [
 
 .controller('SquareCtrl', function SquareController($scope, session, LanguageRepository) {
 
-  $scope.number = 1;
+  $scope.type = "what";
+
+  $scope.form  = { 'interactions': [ [] ] };
+
 
   $scope.nextSquare = function() {
     LanguageRepository.saveSquare();
     $scope.constraint = '';
     $scope.number += 1;
+  };
+
+  $scope.addFields = function(form) {
+    form.interactions.push([]);
+  };
+
+  $scope.submit = function(form) {
+    LanguageRepository.save();
   };
 
 })
