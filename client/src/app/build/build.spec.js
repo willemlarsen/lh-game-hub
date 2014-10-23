@@ -1,9 +1,9 @@
-describe('BuilderCtrl', function() {
+describe('BuildCtrl', function() {
  var scope,
   mockSquareRepository,
   deferredLanguages,
   mockGameRepository,
-  builder = ["builder"];
+  build = ["build"];
 
  beforeEach(function() {
   module("app");
@@ -16,7 +16,7 @@ describe('BuilderCtrl', function() {
    mockSquareRepository = sinon.stub(SquareRepository);
    mockGameRepository.getLanguages.returns(deferredLanguages.promise);
 
-   $controller("BuilderCtrl", {
+   $controller("BuildCtrl", {
     $scope: scope
    });
 

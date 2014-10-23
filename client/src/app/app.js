@@ -1,6 +1,6 @@
 angular.module( 'app', [
   'app.about',
-  'app.builder',
+  'app.build',
   'app.language',
   'app.lap',
   'app.player',
