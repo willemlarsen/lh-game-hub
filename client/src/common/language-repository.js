@@ -23,6 +23,9 @@ angular.module('app').factory('LanguageRepository', function(session, $q, $fireb
 
     getLanguage: function (language) {
       return retrieveChild(language);
+    },
+    saveLap: function (language) {
+
     }
 
   };

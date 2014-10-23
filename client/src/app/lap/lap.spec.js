@@ -50,6 +50,10 @@ describe('LapCtrl', function() {
     });
 
     it('constraint field is cleared after saving to db', function() {
+      var emptyConstraint = '';
+      scope.nextLap();
+      sinon.assert.calledOnce(mockLanguageRepository.saveLap);
+      expect(scope.constraint).toEqual(emptyConstraint);
     });
 
   });

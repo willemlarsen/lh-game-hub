@@ -21,6 +21,8 @@ angular.module('app.lap', [
   $scope.number = 1;
 
   $scope.nextLap = function() {
+    LanguageRepository.saveLap();
+    $scope.constraint = '';
     $scope.number += 1;
   };
 
