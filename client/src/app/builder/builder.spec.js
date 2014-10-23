@@ -2,19 +2,19 @@ describe('BuilderCtrl', function() {
  var scope,
   mockSquareRepository,
   deferredLanguages,
-  mockLanguageRepository,
+  mockGameRepository,
   builder = ["builder"];
 
  beforeEach(function() {
   module("app");
 
-  inject(function($rootScope, $q, $controller, LanguageRepository, SquareRepository) {
+  inject(function($rootScope, $q, $controller, GameRepository, SquareRepository) {
    scope = $rootScope.$new();
 
-   mockLanguageRepository = sinon.stub(LanguageRepository);
+   mockGameRepository = sinon.stub(GameRepository);
    deferredLanguages = $q.defer();
    mockSquareRepository = sinon.stub(SquareRepository);
-   mockLanguageRepository.getLanguages.returns(deferredLanguages.promise);
+   mockGameRepository.getLanguages.returns(deferredLanguages.promise);
 
    $controller("BuilderCtrl", {
     $scope: scope

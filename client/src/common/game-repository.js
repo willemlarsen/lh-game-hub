@@ -1,5 +1,5 @@
 
-angular.module('app').factory('LanguageRepository', function(session, $q, $firebase) {
+angular.module('app').factory('GameRepository', function(session, $q, $firebase) {
 
   var ref = new Firebase("https://languagehuntgamehub.firebaseio.com/");
 

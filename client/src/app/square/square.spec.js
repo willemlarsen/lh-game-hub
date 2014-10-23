@@ -3,23 +3,23 @@ describe('SquareCtrl', function() {
   session,
   deferredSquare,
   deferredLanguages,
-  mockLanguageRepository;
+  mockGameRepository;
 
   beforeEach(function() {
     module("app");
 
-    inject(function($rootScope, $q, $controller, LanguageRepository, _session_) {
+    inject(function($rootScope, $q, $controller, GameRepository, _session_) {
       scope = $rootScope.$new();
       session = _session_;
 
-      mockLanguageRepository = sinon.stub(LanguageRepository);
+      mockGameRepository = sinon.stub(GameRepository);
       deferredSquare = $q.defer();
       deferredLanguages = $q.defer();
-      mockLanguageRepository.getLanguages.returns(deferredLanguages.promise);
+      mockGameRepository.getLanguages.returns(deferredLanguages.promise);
 
       $controller("SquareCtrl", {
         $scope: scope,
-        LanguageRepository: mockLanguageRepository
+        GameRepository: mockGameRepository
       });
 
     });
@@ -37,12 +37,12 @@ describe('SquareCtrl', function() {
   describe('when ready for next square', function() {
 
     beforeEach(function() {
-      mockLanguageRepository.saveSquare.returns(null);
+      mockGameRepository.saveSquare.returns(null);
     });
 
     it('saves the exchanges', function() {
       scope.nextSquare();
-      sinon.assert.calledOnce(mockLanguageRepository.saveSquare);
+      sinon.assert.calledOnce(mockGameRepository.saveSquare);
     });
 
   });
@@ -67,13 +67,13 @@ describe('SquareCtrl', function() {
       xit('saves exchange text to SquareRepository', function() {
         var form = [{}];
         scope.submit(form);
-        sinon.assert.calledOnce(mockLanguageRepository.saveSquare);
+        sinon.assert.calledOnce(mockGameRepository.saveSquare);
       });
 
-      it('squareId to LanguageRepository', function() {
+      it('squareId to GameRepository', function() {
         var form = [{}];
         scope.submit(form);
-        expect(mockLanguageRepository.save.called).toBe(true);
+        expect(mockGameRepository.save.called).toBe(true);
       });
 
     });

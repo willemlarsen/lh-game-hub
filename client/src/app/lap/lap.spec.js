@@ -2,22 +2,22 @@ describe('LapCtrl', function() {
   var scope,
   session,
   deferredLanguages,
-  mockLanguageRepository;
+  mockGameRepository;
 
   beforeEach(function() {
     module("app");
 
-    inject(function($rootScope, $q, $controller, LanguageRepository, _session_) {
+    inject(function($rootScope, $q, $controller, GameRepository, _session_) {
       scope = $rootScope.$new();
       session = _session_;
 
-      mockLanguageRepository = sinon.stub(LanguageRepository);
+      mockGameRepository = sinon.stub(GameRepository);
       deferredLanguages = $q.defer();
-      mockLanguageRepository.getLanguages.returns(deferredLanguages.promise);
+      mockGameRepository.getLanguages.returns(deferredLanguages.promise);
 
       $controller("LapCtrl", {
         $scope: scope,
-        LanguageRepository: mockLanguageRepository
+        GameRepository: mockGameRepository
       });
 
     });
@@ -56,7 +56,7 @@ describe('LapCtrl', function() {
     it('constraint field is cleared after saving to db', function() {
       var emptyConstraint = '';
       scope.nextLap();
-      sinon.assert.calledOnce(mockLanguageRepository.saveLap);
+      sinon.assert.calledOnce(mockGameRepository.saveLap);
       expect(scope.constraint).toEqual(emptyConstraint);
     });
 

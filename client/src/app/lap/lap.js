@@ -16,12 +16,12 @@ angular.module('app.lap', [
   };
 })
 
-.controller('LapCtrl', function LapController($scope, session, LanguageRepository) {
+.controller('LapCtrl', function LapController($scope, session, GameRepository) {
 
   $scope.number = 1;
 
   $scope.nextLap = function() {
-    LanguageRepository.saveLap();
+    GameRepository.saveLap();
     $scope.constraint = '';
     $scope.number += 1;
   };

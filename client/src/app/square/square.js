@@ -16,7 +16,7 @@ angular.module('app.square', [
   };
 })
 
-.controller('SquareCtrl', function SquareController($scope, session, LanguageRepository) {
+.controller('SquareCtrl', function SquareController($scope, session, GameRepository) {
 
   $scope.type = "what";
 
@@ -24,7 +24,7 @@ angular.module('app.square', [
 
 
   $scope.nextSquare = function() {
-    LanguageRepository.saveSquare();
+    GameRepository.saveSquare();
     $scope.constraint = '';
     $scope.number += 1;
   };
@@ -34,7 +34,7 @@ angular.module('app.square', [
   };
 
   $scope.submit = function(form) {
-    LanguageRepository.save();
+    GameRepository.save();
   };
 
 })

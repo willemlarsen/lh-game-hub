@@ -15,9 +15,9 @@ angular.module('app.language', [
   };
 })
 
-.controller('LanguageCtrl', function LanguageController($scope, session, LanguageRepository) {
+.controller('LanguageCtrl', function LanguageController($scope, session, GameRepository) {
 
-  LanguageRepository.getLanguages().then(function(languages) {
+  GameRepository.getLanguages().then(function(languages) {
     $scope.languages = languages;
   });
 
@@ -56,7 +56,7 @@ angular.module('app.language', [
 
   $scope.$watch('game.language', function () {
     if (! _.isEmpty( $scope.game.language ) ) {
-      LanguageRepository.getLanguage($scope.game.language)
+      GameRepository.getLanguage($scope.game.language)
       .then(function(language) {
         $scope.language = language;
       });

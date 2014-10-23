@@ -1,13 +1,13 @@
 
-describe('LanguageRepository', function() {
+describe('GameRepository', function() {
 
-  var LanguageRepository,
+  var GameRepository,
       mockFirebase;
 
   beforeEach(function() {
     module("app");
-    inject(function($firebase, _LanguageRepository_) {
-      LanguageRepository = _LanguageRepository_;
+    inject(function($firebase, _GameRepository_) {
+      GameRepository = _GameRepository_;
       mockFirebase = sinon.stub($firebase);
     });
   });
@@ -15,7 +15,7 @@ describe('LanguageRepository', function() {
  describe('when getting all languages', function() {
 
   xit('calls firebase apis', function() {
-    LanguageRepository.getLanguages();
+    GameRepository.getLanguages();
     expect(mockFirebase.save.called).toBe(true);
   });
 

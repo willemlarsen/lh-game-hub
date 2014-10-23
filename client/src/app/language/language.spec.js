@@ -3,22 +3,22 @@ describe('LanguageCtrl', function() {
   var scope,
   session,
   deferredLanguages,
-  mockLanguageRepository;
+  mockGameRepository;
 
   beforeEach(function() {
     module("app");
 
-    inject(function($rootScope, $q, $controller, LanguageRepository, _session_) {
+    inject(function($rootScope, $q, $controller, GameRepository, _session_) {
       scope = $rootScope.$new();
       session = _session_;
 
-      mockLanguageRepository = sinon.stub(LanguageRepository);
+      mockGameRepository = sinon.stub(GameRepository);
       deferredLanguages = $q.defer();
-      mockLanguageRepository.getLanguages.returns(deferredLanguages.promise);
+      mockGameRepository.getLanguages.returns(deferredLanguages.promise);
 
       $controller("LanguageCtrl", {
         $scope: scope,
-        LanguageRepository: mockLanguageRepository
+        GameRepository: mockGameRepository
       });
 
     });
@@ -34,7 +34,7 @@ describe('LanguageCtrl', function() {
     });
 
     it ('gets all the languages options', function() {
-      sinon.assert.calledOnce(mockLanguageRepository.getLanguages);
+      sinon.assert.calledOnce(mockGameRepository.getLanguages);
     });
 
     it ('languages are loaded into scope', function() {
