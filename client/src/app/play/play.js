@@ -1,7 +1,7 @@
 /**
  * Each section of the site has its own module. It probably also has
  * submodules, though this boilerplate is too simple to demonstrate it. Within
- * `src/app/player`, however, could exist several additional folders representing
+ * `src/app/play`, however, could exist several additional folders representing
  * additional modules that would then be listed as dependencies of this one.
  * For example, a `note` section could have the submodules `note.create`,
  * `note.delete`, `note.edit`, etc.
@@ -12,7 +12,7 @@
  * The dependencies block here is also where component dependencies should be
  * specified, as shown below.
  */
-angular.module( 'app.player', [
+angular.module( 'app.play', [
   'ui.router',
   'plusOne',
   'firebase'
@@ -24,22 +24,22 @@ angular.module( 'app.player', [
  * this way makes each module more "self-contained".
  */
 .config(function config( $stateProvider ) {
-  $stateProvider.state( 'player', {
-    url: '/player',
+  $stateProvider.state( 'play', {
+    url: '/play',
     views: {
       "main": {
-        controller: 'PlayerCtrl',
-        templateUrl: 'player/player.tpl.html'
+        controller: 'PlayCtrl',
+        templateUrl: 'play/play.tpl.html'
       }
     },
-    data:{ pageTitle: 'Player' }
+    data:{ pageTitle: 'Play' }
   });
 })
 
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'PlayerCtrl', function PlayerController( $scope, GameRepository, SquareRepository ) {
+.controller( 'PlayCtrl', function PlayController( $scope, GameRepository, SquareRepository ) {
   // var ref = new Firebase("https://languagehuntgamehub.firebaseio.com");
   // create an AngularFire reference to the data
   // var sync = $firebase(ref);

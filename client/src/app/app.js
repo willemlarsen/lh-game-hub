@@ -3,7 +3,7 @@ angular.module( 'app', [
   'app.build',
   'app.language',
   'app.lap',
-  'app.player',
+  'app.play',
   'app.square',
   'templates-app',
   'templates-common',
@@ -11,7 +11,7 @@ angular.module( 'app', [
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
-  $urlRouterProvider.otherwise( '/player' );
+  $urlRouterProvider.otherwise( '/play' );
 })
 
 .run( function run () {
