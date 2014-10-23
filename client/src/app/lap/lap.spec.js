@@ -52,11 +52,14 @@ describe('LapCtrl', function() {
       scope.nextLap();
       expect(scope.number).toEqual(2);
     });
+    it('saves the Lap', function() {
+      scope.nextLap();
+      sinon.assert.calledOnce(mockGameRepository.saveLap);
+    });
 
     it('constraint field is cleared after saving to db', function() {
       var emptyConstraint = '';
       scope.nextLap();
-      sinon.assert.calledOnce(mockGameRepository.saveLap);
       expect(scope.constraint).toEqual(emptyConstraint);
     });
 
