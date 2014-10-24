@@ -5,6 +5,7 @@ angular.module( 'app', [
   'app.lap',
   'app.play',
   'app.square',
+  'ngCookies',
   'templates-app',
   'templates-common',
   'ui.router'
@@ -25,7 +26,7 @@ angular.module( 'app', [
   });
 })
 
-.factory('session', function () {
+.factory('session', function ($cookies) {
   var game = {
     language: '',
     dialect: '',
@@ -33,9 +34,14 @@ angular.module( 'app', [
     variant: '',
   };
 
+  if ($cookies.game) {
+    game = $cookies.game;
+  }
+
   var session = {
     setGame: function(_game_) {
       game = _.clone(_game_);
+      $cookies.game = game;
     },
 
     getGame: function() {
