@@ -77,9 +77,10 @@ describe('SquareCtrl', function() {
     });
 
     it('square is saved', function() {
+      mockGameRepository.getId.returns(1);
       var form = [{}];
       scope.submit(form);
-      sinon.assert.calledOnce(mockGameRepository.saveSquare);
+      sinon.assert.calledWith(mockGameRepository.saveSquare, 1, form);
     });
 
   });

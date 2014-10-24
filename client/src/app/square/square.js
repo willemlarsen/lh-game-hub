@@ -22,7 +22,6 @@ angular.module('app.square', [
 
   $scope.form  = { 'interactions': [ [] ] };
 
-
   $scope.nextSquare = function() {
     GameRepository.saveSquare();
     $scope.constraint = '';
@@ -34,8 +33,8 @@ angular.module('app.square', [
   };
 
   $scope.submit = function(form) {
-    GameRepository.getId();
-    GameRepository.saveSquare();
+    var squareId = GameRepository.getId();
+    GameRepository.saveSquare(squareId, form);
   };
 
 })
