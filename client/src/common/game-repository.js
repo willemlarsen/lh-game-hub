@@ -28,9 +28,6 @@ angular.module('app').factory('GameRepository', function(session, $q, $firebase)
       sync.$push(angular.fromJson(angular.toJson(square)));
 
     },
-    getId: function() {
-      return createGuid();
-    },
 
     createGuid: function() {
       var s4 = function() {
