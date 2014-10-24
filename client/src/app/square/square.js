@@ -18,24 +18,30 @@ angular.module('app.square', [
 
 .controller('SquareCtrl', function SquareController($scope, session, GameRepository) {
 
-  $scope.type = "what";
-
-  $scope.form  = { 'interactions': [ [] ] };
-
-  // $scope.nextSquare = function() {
-  //   GameRepository.saveSquare();
-  //   $scope.constraint = '';
-  //   $scope.number += 1;
-  // };
-
-
-  $scope.addFields = function(form) {
-    form.interactions.push([]);
+  var interaction = {
+    "question": {
+      "text": "",
+      "audiofile": ""
+    },
+    "answer": {
+      "text": "",
+      "audiofile": ""
+    }
   };
 
-  $scope.submit = function(form) {
+  $scope.square = {
+    "type": "what",
+    "props": "",
+    'interactions': [angular.copy(interaction)]
+  };
+
+  $scope.addFields = function(square) {
+    square.interactions.push(angular.copy(interaction));
+  };
+
+  $scope.submit = function(square) {
     var squareId = GameRepository.createGuid();
-    GameRepository.saveSquare(squareId, form);
+    GameRepository.saveSquare(squareId, square);
   };
 
 })

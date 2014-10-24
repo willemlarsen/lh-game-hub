@@ -3,9 +3,9 @@
 
 <div>
   <form>
-    <h1>Square: {{type}}</h1>
+    <h1>Square: {{square.type}}</h1>
     <h2>Props:
-      <input type="text" ng-model="props">
+      <input type="text" ng-model="square.props">
       {{props}}
     </h2>
   </form>
@@ -13,13 +13,13 @@
 
 <div>
   <form>
-    <div ng-repeat="interaction in form.interactions">
-      <input type="text" class="xdTextBox" ng-model="interaction.question.text" placeholder="{{interaction[0]}}"/><br>
-      <input type="text" class="xdTextBox" ng-model="interaction.answer.text" placeholder="{{interaction[1]}}"/><br>
+    <div ng-repeat="interaction in square.interactions">
+      <input type="text" class="xdTextBox" ng-model="interaction.question.text" /><br>
+      <input type="text" class="xdTextBox" ng-model="interaction.answer.text" /><br>
       <br>
     </div>
-    <button ng-click="submit(form)">Submit</button>
-    <button ng-click="addFields(form)">Add</button>
+    <button ng-click="submit(square)">Submit</button>
+    <button ng-click="addFields(square)">Add</button>
     <hr>
   </form>
 </div>

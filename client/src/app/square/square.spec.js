@@ -29,7 +29,7 @@ describe('SquareCtrl', function() {
   describe('when initialized', function() {
 
     it('makes the first Square is the "What" square', function() {
-      expect(scope.type).toEqual("what");
+      expect(scope.square.type).toEqual("what");
     });
 
   });
