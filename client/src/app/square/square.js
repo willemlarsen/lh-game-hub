@@ -23,19 +23,19 @@ angular.module('app.square', [
   $scope.form  = { 'interactions': [ [] ] };
 
 
-  $scope.nextSquare = function() {
-    GameRepository.saveSquare();
-    $scope.constraint = '';
-    $scope.number += 1;
-  };
+  //$scope.nextSquare = function() {
+    //GameRepository.saveSquare();
+    //$scope.constraint = '';
+    //$scope.number += 1;
+  //};
 
   $scope.addFields = function(form) {
     form.interactions.push([]);
   };
 
   $scope.submit = function(form) {
-    GameRepository.getId();
-    GameRepository.saveSquare();
+    var guid = GameRepository.createGuid();
+    GameRepository.saveSquare(guid);
   };
 
 })

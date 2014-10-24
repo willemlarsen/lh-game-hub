@@ -34,10 +34,14 @@ angular.module('app').factory('GameRepository', function(session, $q, $firebase)
     saveLap: function (language) {
     },
 
-    saveSquare: function (square) {
+    saveSquare: function (guid) {
     },
-    getId: function() {
 
+    createGuid: function() {
+      var s4 = function() {
+        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+      };
+      return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
 
   };

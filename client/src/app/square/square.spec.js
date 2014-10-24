@@ -41,7 +41,7 @@ describe('SquareCtrl', function() {
     });
 
     it('saves the exchanges', function() {
-      scope.nextSquare();
+      scope.submit();
       sinon.assert.calledOnce(mockGameRepository.saveSquare);
     });
 
@@ -70,16 +70,22 @@ describe('SquareCtrl', function() {
 
   describe('when saving a square', function() {
 
+    var guid = "1";
+
+    beforeEach(function() {
+      mockGameRepository.createGuid.returns(guid);
+    });
+
     it('a square id is created', function() {
       var form = [{}];
       scope.submit(form);
-      sinon.assert.calledOnce(mockGameRepository.getId);
+      sinon.assert.calledOnce(mockGameRepository.createGuid);
     });
 
     it('square is saved', function() {
       var form = [{}];
       scope.submit(form);
-      sinon.assert.calledOnce(mockGameRepository.saveSquare);
+      sinon.assert.calledWith(mockGameRepository.saveSquare, guid);
     });
 
   });
