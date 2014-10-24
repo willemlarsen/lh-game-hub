@@ -34,7 +34,9 @@ angular.module('app').factory('GameRepository', function(session, $q, $firebase)
     saveLap: function (language) {
     },
 
-    saveSquare: function (guid) {
+    saveSquare: function (guid, square) {
+      var obj = { guid: square };
+      ref.set(obj);
     },
 
     createGuid: function() {

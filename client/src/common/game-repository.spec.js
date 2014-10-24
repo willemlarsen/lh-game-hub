@@ -19,7 +19,16 @@ describe('GameRepository', function() {
     expect(mockFirebase.save.called).toBe(true);
   });
 
+ });
+
+ describe('saving square', function() {
+
+  xit('calls to Firebase', function() {
+    GameRepository.saveSquare("guid");
+    sinon.assert.calledOnce(mockFirebase.set);
+  });
 
  });
+
 
 });

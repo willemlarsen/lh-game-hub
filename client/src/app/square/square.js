@@ -34,8 +34,9 @@ angular.module('app.square', [
   };
 
   $scope.submit = function(form) {
+    // TODO form into a square
     var guid = GameRepository.createGuid();
-    GameRepository.saveSquare(guid);
+    GameRepository.saveSquare(guid, form);
   };
 
 })
