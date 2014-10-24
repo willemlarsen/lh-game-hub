@@ -23,9 +23,6 @@ angular.module('app').factory('GameRepository', function(session, $q, $firebase)
 
   return {
 
-    save: function() {
-    },
-
     getLanguages: function() {
       return retrieveChild('languages');
     },
@@ -39,6 +36,9 @@ angular.module('app').factory('GameRepository', function(session, $q, $firebase)
 
     saveSquare: function (square) {
     },
+    getId: function() {
+
+    }
 
   };
 

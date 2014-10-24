@@ -1,9 +1,9 @@
 describe('SquareCtrl', function() {
   var scope,
-  session,
-  deferredSquare,
-  deferredLanguages,
-  mockGameRepository;
+    session,
+    deferredSquare,
+    deferredLanguages,
+    mockGameRepository;
 
   beforeEach(function() {
     module("app");
@@ -57,21 +57,30 @@ describe('SquareCtrl', function() {
 
 
     it('appends paired question and answer fields to display', function() {
-      var form = { 'interactions': [ [] ] };
+      var form = {
+        'interactions': [
+          []
+        ]
+      };
       scope.addFields(form);
       expect(form.interactions.length).toBe(2);
     });
 
-    describe('when saving a square', function() {
+  });
 
-      it('saves squareId to GameRepository', function() {
-        var form = [{}];
-        scope.submit(form);
-        expect(mockGameRepository.save.called).toBe(true);
-      });
+  describe('when saving a square', function() {
 
+    it('a square id is created', function() {
+      var form = [{}];
+      scope.submit(form);
+      sinon.assert.calledOnce(mockGameRepository.getId);
     });
 
+    it('square is saved', function() {
+      var form = [{}];
+      scope.submit(form);
+      sinon.assert.calledOnce(mockGameRepository.saveSquare);
+    });
 
   });
 
