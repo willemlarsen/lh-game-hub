@@ -12,15 +12,6 @@ angular.module('app').factory('GameRepository', function(session, $q, $firebase)
     return deferred.promise;
   };
 
-  // UUID generator
-  // Snippet from: http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
-  var s4 = function() {
-    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-  };
-  var guid = function() {
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-  };
-
   return {
 
     getLanguages: function() {
@@ -38,7 +29,14 @@ angular.module('app').factory('GameRepository', function(session, $q, $firebase)
 
     },
     getId: function() {
-      return guid();
+      return createGuid();
+    },
+
+    createGuid: function() {
+      var s4 = function() {
+        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+      };
+      return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
 
   };
