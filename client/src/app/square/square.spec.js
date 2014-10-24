@@ -28,13 +28,13 @@ describe('SquareCtrl', function() {
 
   describe('when initialized', function() {
 
-    it('First Square is the "What" square', function() {
+    it('makes the first Square is the "What" square', function() {
       expect(scope.type).toEqual("what");
     });
 
   });
 
-  describe('when ready for next square', function() {
+  describe('when submitting a square', function() {
 
     beforeEach(function() {
       mockGameRepository.saveSquare.returns(null);
@@ -47,7 +47,7 @@ describe('SquareCtrl', function() {
 
   });
 
-  describe('creating a square', function() {
+  describe('when creating a square', function() {
 
     beforeEach(function() {
       deferredLanguages.resolve();
@@ -62,15 +62,9 @@ describe('SquareCtrl', function() {
       expect(form.interactions.length).toBe(2);
     });
 
-    describe('saving', function() {
+    describe('when saving a square', function() {
 
-      xit('saves exchange text to ', function() {
-        var form = [{}];
-        scope.submit(form);
-        sinon.assert.calledOnce(mockGameRepository.saveSquare);
-      });
-
-      it('squareId to GameRepository', function() {
+      it('saves squareId to GameRepository', function() {
         var form = [{}];
         scope.submit(form);
         expect(mockGameRepository.save.called).toBe(true);
