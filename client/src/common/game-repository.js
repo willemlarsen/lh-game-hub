@@ -25,23 +25,8 @@ angular.module('app').factory('GameRepository', function(session, $q, $firebase)
     saveLap: function(language) {},
 
     saveSquare: function(squareId, square) {
-      var objectToSave = {
-        "type": square.type,
-        "props": square.props,
-      };
-      objectToSave.interactions = _.map(square.interactions, function(item) {
-        return {
-          "question": {
-            "text": item.question.text,
-            "audiofile": item.question.audiofile },
-          "answer": {
-            "text": item.answer.text,
-            "audiofile": item.answer.audiofile }
-        };
-      });
-
       squareRef = ref.child(squareId);
-      squareRef.set(objectToSave);
+      squareRef.set(angular.copy(square));
     },
 
     createGuid: function() {
