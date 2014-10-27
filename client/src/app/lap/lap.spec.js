@@ -14,6 +14,7 @@ describe('LapCtrl', function() {
       mockGameRepository = sinon.stub(GameRepository);
       deferredLanguages = $q.defer();
       mockGameRepository.getLanguages.returns(deferredLanguages.promise);
+      mockGameRepository.createGuid.returns("1");
 
       $controller("LapCtrl", {
         $scope: scope,
@@ -27,15 +28,11 @@ describe('LapCtrl', function() {
   describe('when initialized', function() {
 
     beforeEach(function() {
-
-    });
-
-    it('First Lap has the number 1', function() {
-      expect(scope.number).toEqual(1);
+      mockGameRepository.createGuid.returns("1");
     });
 
     it('lapId is set in the session', function() {
-      expect(scope.number).toEqual(1);
+      expect(session.lapId).toEqual("lap-1");
     });
 
   });

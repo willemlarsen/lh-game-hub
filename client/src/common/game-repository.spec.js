@@ -6,9 +6,9 @@ describe('GameRepository', function() {
 
   beforeEach(function() {
     module("app");
-    inject(function($firebase, _GameRepository_) {
+    inject(function(_GameRepository_) {
       GameRepository = _GameRepository_;
-      mockFirebase = sinon.stub($firebase);
+      mockFirebase = sinon.stub(Firebase);
     });
   });
 
@@ -22,6 +22,12 @@ describe('GameRepository', function() {
  });
 
  describe('saving square', function() {
+
+   xit('squareId is saved to lap', function() {
+     //mockGameRepository = sinon.spy(GameRepository);
+     //mockGameRepository.saveSquare(squareId, square, lapId);
+     //sinon.assert.calledOnce(mockGameRepository.saveSquareToLap);
+   });
 
   xit('calls to Firebase', function() {
     GameRepository.saveSquare("guid");

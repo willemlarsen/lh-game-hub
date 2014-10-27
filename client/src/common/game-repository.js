@@ -1,7 +1,6 @@
-angular.module('app').factory('GameRepository', function(session, $q, $firebase) {
+angular.module('app').factory('GameRepository', function(session, $q) {
 
   var ref = new Firebase("https://languagehuntgamehub.firebaseio.com/");
-  var sync = $firebase(ref);
 
   var retrieveChild = function(child) {
     var deferred = $q.defer();
@@ -10,6 +9,12 @@ angular.module('app').factory('GameRepository', function(session, $q, $firebase)
       deferred.resolve(data.val());
     });
     return deferred.promise;
+  };
+
+  var saveSquareToLap = function(squareId, lapId) {
+    var language = session.getGame().language;
+    lapIdRef = ref.child(session.getGame().language).child(lapId);
+    lapIdRef.child('squares').push(squareId);
   };
 
   return {
@@ -24,17 +29,11 @@ angular.module('app').factory('GameRepository', function(session, $q, $firebase)
 
     saveLap: function(language) {},
 
-    saveSquare: function(squareId, square) {
-      // saveSquareToLap(squareId);
+    saveSquare: function(squareId, square, lapId) {
+      saveSquareToLap(squareId, lapId);
       squareRef = ref.child(squareId);
       squareRef.set(angular.copy(square));
     },
-
-    // saveSquareToLap: function(squareId, lapId) {
-    //   var language = session.language;
-    //   lapIdRef = ref.child('language').child(lapId);
-    //   lapIdRef.child('squares').push(squareId);
-    // },
 
     createGuid: function() {
       var s4 = function() {

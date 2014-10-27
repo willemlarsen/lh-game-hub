@@ -41,7 +41,7 @@ angular.module('app.square', [
 
   $scope.submit = function(square) {
     var squareId = "square-" + GameRepository.createGuid();
-    GameRepository.saveSquare(squareId, square);
+    GameRepository.saveSquare(squareId, square, session.getGame().lapId);
   };
 
 })

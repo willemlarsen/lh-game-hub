@@ -76,27 +76,26 @@ describe('SquareCtrl', function() {
       mockGameRepository.createGuid.returns(guid);
     });
 
-    it('a square id is created', function() {
+    it('a squareId is created', function() {
       var form = [{}];
       scope.submit(form);
       sinon.assert.calledOnce(mockGameRepository.createGuid);
     });
 
+    it('squareId is saved to lap', function() {
+      var squareId = 'square-1',
+      lapId = 'lap-1',
+      square = {};
+      session.setGame({lapId: lapId});
+      scope.submit(square);
+      sinon.assert.calledWith(mockGameRepository.saveSquare, squareId, square, lapId);
+    });
+
     it('square is saved', function() {
-      mockGameRepository.createGuid.returns(1);
       var form = [{}];
       scope.submit(form);
       sinon.assert.calledWith(mockGameRepository.saveSquare, "square-1", form);
-
     });
-
-    // it('saves the square to the lapid', function () {
-    //   var lapid = 'Lap1';
-    //   mockGameRepository.createGuid.returns('square1');
-    //   var form = [{}];
-    //   scope.submit(form);
-    //   sinon.assert.calledOnce(mockGameRepository.saveSquareToLap);
-    // });
 
   });
 
