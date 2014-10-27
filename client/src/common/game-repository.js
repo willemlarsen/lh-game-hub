@@ -29,6 +29,7 @@ angular.module('app').factory('GameRepository', function(session, $q, $firebase)
       squareRef = ref.child(squareId);
       squareRef.set(angular.copy(square));
     },
+
     // saveSquareToLap: function(squareId, lapId) {
     //   var language = session.language;
     //   lapIdRef = ref.child('language').child(lapId);
