@@ -86,7 +86,7 @@ describe('SquareCtrl', function() {
       mockGameRepository.createGuid.returns(1);
       var form = [{}];
       scope.submit(form);
-      sinon.assert.calledWith(mockGameRepository.saveSquare, 1, form);
+      sinon.assert.calledWith(mockGameRepository.saveSquare, "square-1", form);
 
     });
 

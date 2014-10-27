@@ -40,7 +40,7 @@ angular.module('app.square', [
   };
 
   $scope.submit = function(square) {
-    var squareId = GameRepository.createGuid();
+    var squareId = "square-" + GameRepository.createGuid();
     GameRepository.saveSquare(squareId, square);
   };
 
