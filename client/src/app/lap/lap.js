@@ -18,10 +18,10 @@ angular.module('app.lap', [
 .controller('LapCtrl', function LapController($scope, session, GameRepository) {
 
   var validGame = function() {
-    return !_.empty(session.getGame().language) &&
-      !_.empty(session.getGame().dialect) &&
-      !_.empty(session.getGame().progression) &&
-      !_.empty(session.getGame().variant);
+    return !_.isEmpty(session.getGame().language) &&
+      !_.isEmpty(session.getGame().dialect) &&
+      !_.isEmpty(session.getGame().progression) &&
+      !_.isEmpty(session.getGame().variant);
   };
   $scope.validGame = validGame;
 

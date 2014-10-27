@@ -25,33 +25,62 @@ angular.module('app.language', [
   $scope.editing = false;
   $scope.progressions = [];
 
-  $scope.getProgressions = function() {
-    if (!_.isEmpty($scope.language) && !_.isEmpty($scope.game.language) && !_.isEmpty($scope.game.dialect)) {
-      var progressions = $scope.language[$scope.game.dialect].progressions;
-      return _.map(progressions, function(item){  return _.first(_.keys(item)); });
-    }
-    return [];
-  };
-  $scope.canGetVariants = function() {
-    var elements = [$scope.language, $scope.game.language,
-      $scope.game.dialect, $scope.game.progression];
-      return _.all(elements, function (item) { return !_.isEmpty(item); } );
+  var canGetGameOptions = function(contextItems) {
+    return _.all(contextItems, function (item) { return !_.isEmpty(item); } );
   };
 
-  $scope.getVariants = function() {
-    if (!$scope.canGetVariants()) { return []; }
+  $scope.getProgressions = function () {
+    if (!canGetGameOptions([
+          $scope.language,
+          $scope.game.language,
+          $scope.game.dialect
+        ])) { return []; }
 
+    var progressions = $scope.language[$scope.game.dialect].progressions;
+    return _.map(progressions, function (item){  return _.first(_.keys(item)); });
+  };
+
+  var findGameProgression = function (progressions) {
+    return _.find(progressions, function (progression) {
+      return _.first(_.keys(progression)) === $scope.game.progression;
+    });
+  };
+
+  var getProgressionId = function (progression) {
+      return _.first(_.values(progression));
+  };
+
+  var canGetVariants = function () {
+    var elements = [
+        $scope.language,
+        $scope.game.language,
+        $scope.game.dialect,
+        $scope.game.progression
+      ];
+
+    return canGetGameOptions(elements);
+  };
+
+  var getVariantsFromScope = function () {
     var language = $scope.language,
     dialect = language[$scope.game.dialect],
     progressions = dialect.progressions,
-    theResultWeWant = (_.find(progressions, function (progression) {
-      return _.first(_.keys(progression)) === $scope.game.progression;
-    })),
-    progression = theResultWeWant,
-    progressionId = _.first(_.values(progression)),
+    progression = findGameProgression(progressions),
+    progressionId = getProgressionId(progression),
     variants = language[progressionId].variants;
 
-    return _.map(variants, function(item){  return _.first(_.keys(item)); });
+    return variants;
+  };
+
+  var properFormat = function (list) {
+     return _.map(list, function (item){  return _.first(_.keys(item)); });
+  };
+
+  $scope.getVariants = function () {
+    if (!canGetVariants()) { return []; }
+
+    var variants = getVariantsFromScope();
+    return properFormat(variants);
   };
 
   $scope.$watch('game.language', function () {
