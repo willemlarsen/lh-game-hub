@@ -34,7 +34,8 @@ describe( 'session', function() {
         language: '',
         dialect: '',
         progression: '',
-        variant: ""
+        variant: "",
+        lapId: "",
       };
       expect(session.getGame()).toEqual(game);
     });

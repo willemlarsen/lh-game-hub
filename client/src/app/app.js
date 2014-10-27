@@ -32,6 +32,7 @@ angular.module( 'app', [
     dialect: '',
     progression: '',
     variant: '',
+    lapId: '',
   };
 
   if ($cookies.game) {
