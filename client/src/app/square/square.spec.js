@@ -90,6 +90,14 @@ describe('SquareCtrl', function() {
 
     });
 
+    // it('saves the square to the lapid', function () {
+    //   var lapid = 'Lap1';
+    //   mockGameRepository.createGuid.returns('square1');
+    //   var form = [{}];
+    //   scope.submit(form);
+    //   sinon.assert.calledOnce(mockGameRepository.saveSquareToLap);
+    // });
+
   });
 
 });

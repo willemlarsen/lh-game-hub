@@ -1,8 +1,8 @@
 describe('LapCtrl', function() {
   var scope,
-  session,
-  deferredLanguages,
-  mockGameRepository;
+    session,
+    deferredLanguages,
+    mockGameRepository;
 
   beforeEach(function() {
     module("app");
@@ -26,7 +26,15 @@ describe('LapCtrl', function() {
 
   describe('when initialized', function() {
 
+    beforeEach(function() {
+
+    });
+
     it('First Lap has the number 1', function() {
+      expect(scope.number).toEqual(1);
+    });
+
+    it('lapId is set in the session', function() {
       expect(scope.number).toEqual(1);
     });
 
@@ -39,14 +47,16 @@ describe('LapCtrl', function() {
       scope.nextLap();
       expect(scope.number).toEqual(2);
     });
+
     it('saves the Lap', function() {
       scope.nextLap();
       sinon.assert.calledOnce(mockGameRepository.saveLap);
     });
-    it('creates a new LapId', function () {
-      scope.lapid = "1a";
+
+    it('creates a new LapId', function() {
+      session.lapid = "1a";
       scope.nextLap();
-      expect(scope.lapid).toNotEqual("1a");
+      expect(session.lapid).toNotEqual("lap-1a");
     });
 
     it('constraint field is cleared after saving to db', function() {
