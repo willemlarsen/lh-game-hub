@@ -30,19 +30,6 @@ describe('LapCtrl', function() {
       expect(scope.number).toEqual(1);
     });
 
-    xit('initializes the first square, "What"', function() {
-      expect(scope.square).toEqual('what');
-    });
-
-    xit('Belongs to the variant', function() {
-      //expect(scope.variant).toEqual(parent);
-    });
-
-    xit('UI allows constraint input', function() {
-      var userInputConstraint = "First and Second Person Singular";
-      expect(scope.constraint).toEqual(constraint);
-    });
-
   });
 
   describe('when ready for next Lap', function() {
