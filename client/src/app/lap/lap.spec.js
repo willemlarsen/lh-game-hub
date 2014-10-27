@@ -56,6 +56,11 @@ describe('LapCtrl', function() {
       scope.nextLap();
       sinon.assert.calledOnce(mockGameRepository.saveLap);
     });
+    it('creates a new LapId', function () {
+      scope.lapid = "1a";
+      scope.nextLap();
+      expect(scope.lapid).toNotEqual("1a");
+    });
 
     it('constraint field is cleared after saving to db', function() {
       var emptyConstraint = '';

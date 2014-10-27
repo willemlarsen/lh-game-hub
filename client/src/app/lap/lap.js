@@ -19,11 +19,14 @@ angular.module('app.lap', [
 .controller('LapCtrl', function LapController($scope, session, GameRepository) {
 
   $scope.number = 1;
+  $scope.lapid = "lap" + GameRepository.createGuid();
 
   $scope.nextLap = function() {
     GameRepository.saveLap();
     $scope.constraint = '';
     $scope.number += 1;
+    $scope.lapid = "lap" + GameRepository.createGuid();
+
   };
 
 })
