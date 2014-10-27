@@ -1,4 +1,3 @@
-
 angular.module('app.lap', [
   'ui.router',
   'firebase'
@@ -18,14 +17,18 @@ angular.module('app.lap', [
 
 .controller('LapCtrl', function LapController($scope, session, GameRepository) {
 
+  var createLapId = function() {
+    return "lap-" + GameRepository.createGuid();
+  };
+
   $scope.number = 1;
-  session.lapid = "lap" + GameRepository.createGuid();
+  session.lapid = createLapId();
 
   $scope.nextLap = function() {
     GameRepository.saveLap();
     $scope.constraint = '';
     $scope.number += 1;
-    session.lapid = "lap" + GameRepository.createGuid();
+    session.lapid = createLapId();
 
   };
 
