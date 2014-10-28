@@ -23,6 +23,11 @@ angular.module('app.lap', [
       !_.isEmpty(session.getGame().progression) &&
       !_.isEmpty(session.getGame().variant);
   };
+
+  var createLapId = function() {
+    return "lap-" + GameRepository.createGuid();
+  };
+
   $scope.validGame = validGame;
 
   var init = (function() {
@@ -30,12 +35,9 @@ angular.module('app.lap', [
       var game = session.getGame();
       game.lapId = createLapId();
       session.setGame(game);
+      GameRepository.saveLap(game.lapId, {constraint: '', squares: []});
     }
   })();
-
-  var createLapId = function() {
-    return "lap-" + GameRepository.createGuid();
-  };
 
   $scope.number = 1;
   session.lapId = createLapId();

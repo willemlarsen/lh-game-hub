@@ -1,5 +1,6 @@
 describe('LapCtrl', function() {
   var scope,
+    controller,
     session,
     deferredLanguages,
     mockGameRepository;
@@ -10,6 +11,7 @@ describe('LapCtrl', function() {
     inject(function($rootScope, $q, $controller, GameRepository, _session_) {
       scope = $rootScope.$new();
       session = _session_;
+      controller = $controller;
 
       mockGameRepository = sinon.stub(GameRepository);
       deferredLanguages = $q.defer();
@@ -29,10 +31,25 @@ describe('LapCtrl', function() {
 
     beforeEach(function() {
       mockGameRepository.createGuid.returns("1");
+      session.setGame({
+        language: 'English',
+        dialect: 'Midwest',
+        progression: 'Easy',
+        variant: 'Easy1',
+      });
+
+      controller("LapCtrl", {
+        $scope: scope,
+        GameRepository: mockGameRepository
+      });
     });
 
     it('lapId is set in the session', function() {
       expect(session.lapId).toEqual("lap-1");
+    });
+
+    it('lapId is saved', function() {
+      sinon.assert.calledOnce(mockGameRepository.saveLap);
     });
 
   });
