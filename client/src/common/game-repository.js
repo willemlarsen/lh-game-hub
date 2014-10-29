@@ -45,6 +45,10 @@ angular.module('app').factory('GameRepository', function(session, $q) {
       return retrieveChild(language);
     },
 
+    getLaps: function() {
+      return retrieveChild(session.getGame().variantId + '/laps');
+    },
+
     saveLap: function(lapId, lap) {
       var language = session.getGame().language;
       var lapRef = ref.child(language).child(lapId);
