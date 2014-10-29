@@ -12,9 +12,8 @@ angular.module('app').factory('GameRepository', function(session, $q) {
   };
 
   var saveSquareToLap = function(squareId, lapId) {
-    var language = session.getGame().language;
-    lapIdRef = ref.child(session.getGame().language).child(lapId);
-    squaresRef = lapIdRef.child('squares');
+    var lapIdRef = ref.child(session.getGame().language).child(lapId);
+    var squaresRef = lapIdRef.child('squares');
     squaresRef.once('value', function(item) {
       var list = item.val() || [];
       list.push(squareId);
@@ -35,13 +34,13 @@ angular.module('app').factory('GameRepository', function(session, $q) {
 
     saveLap: function(lapId, lap) {
       var language = session.getGame().language;
-      lapRef = ref.child(language).child(lapId);
+      var lapRef = ref.child(language).child(lapId);
       lapRef.set(angular.copy(lap));
     },
 
     saveSquare: function(squareId, square, lapId) {
       saveSquareToLap(squareId, lapId);
-      squareRef = ref.child(squareId);
+      var squareRef = ref.child(squareId);
       squareRef.set(angular.copy(square));
     },
 
