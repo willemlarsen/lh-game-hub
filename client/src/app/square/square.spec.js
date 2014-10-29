@@ -28,10 +28,6 @@ describe('SquareCtrl', function() {
 
   describe('when initialized', function() {
 
-    it('makes the first Square is the "What" square', function() {
-      expect(scope.square.type).toEqual("what");
-    });
-
   });
 
   describe('when submitting a square', function() {
@@ -83,8 +79,8 @@ describe('SquareCtrl', function() {
     });
 
     it('squareId is saved to lap', function() {
-      var squareId = 'square-1',
-      lapId = 'lap-1',
+      var squareId = '1',
+      lapId = '1',
       square = {};
       session.setGame({lapId: lapId});
       scope.submit(square);
@@ -94,7 +90,7 @@ describe('SquareCtrl', function() {
     it('square is saved', function() {
       var form = [{}];
       scope.submit(form);
-      sinon.assert.calledWith(mockGameRepository.saveSquare, "square-1", form);
+      sinon.assert.calledWith(mockGameRepository.saveSquare, "1", form);
     });
 
   });

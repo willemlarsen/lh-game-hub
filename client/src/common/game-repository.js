@@ -45,11 +45,12 @@ angular.module('app').factory('GameRepository', function(session, $q) {
       squareRef.set(angular.copy(square));
     },
 
-    createGuid: function() {
+    createGuid: function(_prefix) {
+      var prefix = _prefix || "";
       var s4 = function() {
         return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
       };
-      return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+      return prefix + s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
 
   };

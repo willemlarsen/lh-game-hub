@@ -44,7 +44,8 @@ angular.module('app.square', [
   };
 
   $scope.submit = function(square) {
-    var squareId = "square-" + GameRepository.createGuid();
+    var prefix = "square-" + $scope.type + "-";
+    var squareId = GameRepository.createGuid(prefix);
     GameRepository.saveSquare(squareId, square, session.getGame().lapId);
   };
 
