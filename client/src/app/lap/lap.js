@@ -8,7 +8,7 @@ angular.module('app.lap', [
     restrict: 'E', //E = element, A = attribute, C = class, M = comment
     scope: {
       //@ reads the attribute value, = provides two-way binding, & works with functions
-      title: '@'
+      editable: '='
     },
     templateUrl: "lap/lap.tpl.html",
     controller: 'LapCtrl' //Embed a custom controller in the directive

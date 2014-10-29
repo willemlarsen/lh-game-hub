@@ -7,19 +7,5 @@
   </language>
 </div>
 <div>
-  <p><strong>{{square.type}}</strong></p>
-  <ul  ng-repeat="interaction in square.interactions">
-    <li class="lead">
-      <audio controls>
-        <source ng-src="{{audio_path('assets/irish/conemara/', interaction.question.audiofile)}}" type="audio/mp3"/>
-        </audio>
-      {{interaction.question.text}}
-      </li>
-    <li class="lead">
-          <audio controls>
-        <source ng-src="{{audio_path('assets/irish/conemara/', interaction.answer.audiofile)}}" type="audio/mp3"/>
-        </audio>
-      {{interaction.answer.text}}
-    </li>
-  </ul>
+  <lap editable="false"></lap>
 </div>

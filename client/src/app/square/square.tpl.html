@@ -1,6 +1,6 @@
 
 
-<div>
+<div ng-if="editable">
   <form>
     <h1>Square: {{square.type}}</h1>
     <h2>Props:
@@ -8,9 +8,7 @@
       {{props}}
     </h2>
   </form>
-</div>
 
-<div>
   <form>
     <div ng-repeat="interaction in square.interactions">
       <input type="text" class="xdTextBox" ng-model="interaction.question.text" /><br>
@@ -22,4 +20,12 @@
   </form>
 </div>
 
-
+<div ng-if="!editable">
+  <h1>Square: {{square.type}}</h1>
+  <h2>Props: {{props}} </h2>
+  <div ng-repeat="interaction in square.interactions">
+    {{interaction.question.text}}
+    {{interaction.answer.text}}
+    <br>
+  </div>
+</div>
