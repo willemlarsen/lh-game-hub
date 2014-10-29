@@ -29,11 +29,14 @@ angular.module('app.square', [
     }
   };
 
-  $scope.square = {
-    "type": "what",
-    "props": "",
-    'interactions': [angular.copy(interaction)]
+  $scope.init = function(type) {
+    $scope.square = {
+      "type": type,
+      "props": "",
+      'interactions': [angular.copy(interaction)]
+    };
   };
+
 
   $scope.addFields = function(square) {
     square.interactions.push(angular.copy(interaction));

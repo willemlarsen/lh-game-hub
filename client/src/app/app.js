@@ -27,20 +27,20 @@ angular.module( 'app', [
 })
 
 .factory('session', function ($cookies) {
-  var game = {
+  var xgame = {
     language: '',
     dialect: '',
     progression: '',
     variant: '',
     lapId: '',
   };
-  //var game = {
-    //language: 'Irish',
-    //dialect: 'Connacht',
-    //progression: 'Brían\'s Favorite',
-    //variant: 'Connemara-1',
-    //lapId: '',
-  //};
+  var game = {
+    language: 'Irish',
+    dialect: 'Connacht',
+    progression: 'Brían\'s Favorite',
+    variant: 'Connemara-1',
+    lapId: '',
+  };
 
   if ($cookies.game) {
     game = $cookies.game;

@@ -6,7 +6,10 @@
       <input type="text" ng-model="constraint">
       {{constraint}}
     </h2>
-    <square></square>
+    <div ng-repeat="type in ['what', 'who']">
+      <square type="type"></square>
+    </div>
+    <!--<square ng-repeat="type in ['what', 'who']" ng-init="init(type)"></square>-->
     <input type="button" ng-click="nextLap()" id="nextLap" value="New Lap"/>
   </form>
 </div>
