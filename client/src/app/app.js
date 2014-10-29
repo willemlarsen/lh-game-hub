@@ -27,18 +27,22 @@ angular.module( 'app', [
 })
 
 .factory('session', function ($cookies) {
-  var xgame = {
+  var game = {
     language: '',
     dialect: '',
     progression: '',
+    progressionId: '',
     variant: '',
+    variantId: '',
     lapId: '',
   };
-  var game = {
+  var xgame = {
     language: 'Irish',
     dialect: 'Connacht',
     progression: 'Brían\'s Favorite',
+    progressionId: 'progressionId',
     variant: 'Connemara-1',
+    variantId: 'variantId',
     lapId: '',
   };
 

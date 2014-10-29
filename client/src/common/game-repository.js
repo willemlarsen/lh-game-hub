@@ -1,3 +1,4 @@
+
 angular.module('app').factory('GameRepository', function(session, $q) {
 
   var ref = new Firebase("https://languagehuntgamehub.firebaseio.com/");
@@ -22,6 +23,18 @@ angular.module('app').factory('GameRepository', function(session, $q) {
 
   };
 
+  var saveLapToVariant = function(lapId, variantId) {
+    var variantRef = ref.child(session.getGame().language).child(variantId);
+    var itemsRef = variantRef.child('laps');
+    itemsRef.once('value', function(item) {
+      var list = item.val() || [];
+      if (! _.contains(list, item) ) {
+        list.push(lapId);
+        itemsRef.set(list);
+      }
+    });
+  };
+
   return {
 
     getLanguages: function() {
@@ -36,6 +49,7 @@ angular.module('app').factory('GameRepository', function(session, $q) {
       var language = session.getGame().language;
       var lapRef = ref.child(language).child(lapId);
       lapRef.set(angular.copy(lap));
+      saveLapToVariant(lapId, session.getGame().variantId);
     },
 
     saveSquare: function(squareId, square, lapId) {

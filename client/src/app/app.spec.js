@@ -34,7 +34,9 @@ describe( 'session', function() {
         language: '',
         dialect: '',
         progression: '',
+        progressionId: '',
         variant: "",
+        variantId: "",
         lapId: "",
       };
       expect(session.getGame()).toEqual(game);
