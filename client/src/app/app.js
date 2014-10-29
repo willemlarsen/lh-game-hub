@@ -34,6 +34,13 @@ angular.module( 'app', [
     variant: '',
     lapId: '',
   };
+  //var game = {
+    //language: 'Irish',
+    //dialect: 'Connacht',
+    //progression: 'Brían\'s Favorite',
+    //variant: 'Connemara-1',
+    //lapId: '',
+  //};
 
   if ($cookies.game) {
     game = $cookies.game;
