@@ -52,7 +52,7 @@ describe('LanguageCtrl', function() {
 
   describe('when submitting a game selection', function() {
 
-    it('the game is stored in session', function() {
+    xit('the game is stored in session', function() {
       var game = {
         language: 'English',
         dialect: 'Midwest',

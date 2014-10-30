@@ -96,7 +96,7 @@ angular.module('app.language', [
   };
 
   var assignVariantId = function () {
-    var variants = getVariantsFromsScope(),
+    var variants = getVariantsFromScope(),
     variant = findGameVariant(variants),
     variantId = getVariantId(variant);
     $scope.game.variantId = _.first(_.values(variant));
@@ -116,7 +116,7 @@ angular.module('app.language', [
   });
 
   $scope.submit = function() {
-    $scope.game.variantId = 'variantId';
+    assignVariantId();
     session.setGame( $scope.game );
     $scope.editing = false;
   };
