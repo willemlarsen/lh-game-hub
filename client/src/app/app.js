@@ -5,6 +5,7 @@ angular.module( 'app', [
   'app.lap',
   'app.play',
   'app.square',
+  'app.variant',
   'ngCookies',
   'templates-app',
   'templates-common',
