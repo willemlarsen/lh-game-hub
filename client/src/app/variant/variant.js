@@ -34,12 +34,10 @@ angular.module('app.variant', [
       });
     }
   };
-
-  $scope.$watch('session.getGame().variant', function() {
+  $scope.currentLap = "";
+  $scope.$on('gameChanged', function(event) {
     init();
   });
-
-  $scope.currentLap = "";
 
 })
 

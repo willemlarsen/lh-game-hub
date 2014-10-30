@@ -27,7 +27,7 @@ angular.module( 'app', [
   });
 })
 
-.factory('session', function ($cookies) {
+.factory('session', function ($rootScope, $cookies) {
   var game = {
     language: '',
     dialect: '',
@@ -55,6 +55,7 @@ angular.module( 'app', [
     setGame: function(_game_) {
       game = _.clone(_game_);
       $cookies.game = game;
+      $rootScope.$broadcast('gameChanged');
     },
 
     getGame: function() {

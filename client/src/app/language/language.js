@@ -97,6 +97,7 @@ angular.module('app.language', [
   });
 
   $scope.submit = function() {
+    $scope.game.variantId = 'variantId';
     session.setGame( $scope.game );
     $scope.editing = false;
   };
