@@ -46,8 +46,18 @@ angular.module('app.language', [
     });
   };
 
+  var findGameVariant = function (variants) {
+    return _.find(variants, function (variant) {
+      return _.first(_.keys(variant)) === $scope.game.variant;
+    });
+  };
+
   var getProgressionId = function (progression) {
       return _.first(_.values(progression));
+  };
+
+  var getVariantId = function (variant) {
+      return _.first(_.values(variant));
   };
 
   var canGetVariants = function () {
@@ -69,6 +79,8 @@ angular.module('app.language', [
     progressionId = getProgressionId(progression),
     variants = language[progressionId].variants;
 
+    $scope.game.progressionId = 'progressionId';
+
     return variants;
   };
 
@@ -81,6 +93,13 @@ angular.module('app.language', [
 
     var variants = getVariantsFromScope();
     return properFormat(variants);
+  };
+
+  var assignVariantId = function () {
+    var variants = getVariantsFromsScope(),
+    variant = findGameVariant(variants),
+    variantId = getVariantId(variant);
+    $scope.game.variantId = _.first(_.values(variant));
   };
 
   $scope.$watch('game.language', function () {
