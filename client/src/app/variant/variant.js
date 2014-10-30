@@ -38,8 +38,8 @@ angular.module('app.variant', [
   //     });
   //   }
   // })();
-  $scope.laps = [1, 2, 3, 4, 5];
-
+  $scope.laps = ['x1', 'b2', 'c3', 'v5'];
+  $scope.currentLap = "";
 
 })
 

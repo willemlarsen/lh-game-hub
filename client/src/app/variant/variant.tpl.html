@@ -1,7 +1,13 @@
 <div>
   <form>
-    <select ng-model="lap" ng-options="lap for lap in laps">
+    <select ng-model="currentLap">
       <option value="">--choose lap--</option>
+      <option ng-repeat="(lapIndex, lap) in laps"
+      value="{{lap}}">{{lapIndex + 1}}</option>
     </select>
+    {{laps.indexOf('b2')}}
+    <br>
   </form>
 </div>
+
+
