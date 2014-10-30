@@ -3,6 +3,7 @@ angular.module('app.build', [
  'firebase'
 ])
 
+
 .config(function config($stateProvider) {
  $stateProvider.state('build', {
   url: '/build',

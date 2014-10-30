@@ -17,28 +17,28 @@ angular.module('app.variant', [
 
 .controller('VariantCtrl', function VariantController($scope, session, GameRepository) {
 
-  // GameRepository.getLanguages().then(function(languages) {
-  //     $scope.languages = languages;
-  //   });
-  // var validGame = function() {
-  //   return !_.isEmpty(session.getGame().language) &&
-  //     !_.isEmpty(session.getGame().dialect) &&
-  //     !_.isEmpty(session.getGame().progression) &&
-  //     !_.isEmpty(session.getGame().variant);
-  // };
+  var validGame = function() {
+      return !_.isEmpty(session.getGame().language) &&
+        !_.isEmpty(session.getGame().dialect) &&
+        !_.isEmpty(session.getGame().progression) &&
+        !_.isEmpty(session.getGame().variant);
+    };
 
-  // var init = (function() {
-  //   if (validGame()) {
-  //     var game = session.getGame();
-  //     game.lapId = createLapId();
-  //     session.setGame(game);
-  //     GameRepository.saveLap(game.lapId, {
-  //       constraint: '',
-  //       squares: []
-  //     });
-  //   }
-  // })();
-  $scope.laps = ['x1', 'b2', 'c3', 'v5'];
+  var init = function() {
+    if (validGame()) {
+      GameRepository.getLaps().then(function(laps) {
+        $scope.laps = laps;
+      },
+      function(reason) {
+        console.log('Failed: ' + reason);
+      });
+    }
+  };
+
+  $scope.$watch('session.getGame().variant', function() {
+    init();
+  });
+
   $scope.currentLap = "";
 
 })
