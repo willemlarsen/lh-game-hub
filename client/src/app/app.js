@@ -60,7 +60,15 @@ angular.module( 'app', [
 
     getGame: function() {
       return _.clone(game);
+    },
+
+    isValidGame: function() {
+      return !_.isEmpty(game.language) &&
+        !_.isEmpty(game.dialect) &&
+        !_.isEmpty(game.progression) &&
+        !_.isEmpty(game.variant);
     }
+
   };
 
   return session;

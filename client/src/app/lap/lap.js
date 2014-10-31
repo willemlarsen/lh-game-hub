@@ -17,21 +17,12 @@ angular.module('app.lap', [
 
 .controller('LapCtrl', function LapController($scope, session, GameRepository) {
 
-  var validGame = function() {
-    return !_.isEmpty(session.getGame().language) &&
-      !_.isEmpty(session.getGame().dialect) &&
-      !_.isEmpty(session.getGame().progression) &&
-      !_.isEmpty(session.getGame().variant);
-  };
-
   var createLapId = function() {
     return "lap-" + GameRepository.createGuid();
   };
 
-  $scope.validGame = validGame;
-
   var init = (function() {
-    if (validGame()) {
+    if (session.isValidGame()) {
       var game = session.getGame();
       game.lapId = createLapId();
       session.setGame(game);
