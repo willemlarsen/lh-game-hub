@@ -1,8 +1,10 @@
+
 describe('LapCtrl', function() {
   var scope,
     controller,
     session,
     deferredLanguages,
+    deferredSquares,
     mockGameRepository;
 
   beforeEach(function() {
@@ -16,7 +18,9 @@ describe('LapCtrl', function() {
       mockGameRepository = sinon.stub(GameRepository);
       deferredLanguages = $q.defer();
       mockGameRepository.getLanguages.returns(deferredLanguages.promise);
-      mockGameRepository.createGuid.returns("1");
+      //mockGameRepository.createGuid.returns("");
+      deferredSquares = $q.defer();
+      mockGameRepository.getSquareIds.returns(deferredSquares.promise);
 
       $controller("LapCtrl", {
         $scope: scope,
@@ -29,27 +33,44 @@ describe('LapCtrl', function() {
 
   describe('when initialized', function() {
 
-    beforeEach(function() {
-      mockGameRepository.createGuid.returns("1");
-      session.setGame({
-        language: 'English',
-        dialect: 'Midwest',
-        progression: 'Easy',
-        variant: 'Easy1',
-      });
+    var game = {
+      language: 'English',
+      dialect: 'Midwest',
+      progression: 'Easy',
+      variant: 'Easy1',
+      lapId: 'lapId-1',
+    };
 
+    var createLap = function() {
       controller("LapCtrl", {
         $scope: scope,
         GameRepository: mockGameRepository
       });
+    };
+
+    var x = function(x) {
+      console.log(x + ' something');
+    };
+
+    beforeEach(function() {
+      mockGameRepository.createGuid.returns("1");
+      session.setGame(game);
     });
 
     it('lapId is set in the session', function() {
-      expect(session.lapId).toEqual("lap-1");
+      createLap();
+      expect(session.getGame().lapId).toEqual("lapId-1");
     });
 
-    xit('lap is saved in session', function() {
-      expect(session.lap).toEqual(1);
+    xit('lap is saved in session if we have no lap id', function() {
+      expect(session.getGame().lap).toEqual(1);
+    });
+
+    it('when isValidGame and isValidLap square ids are retrieved', function() {
+      deferredSquares.resolve();
+      scope.$apply();
+      createLap();
+      sinon.assert.calledOnce(mockGameRepository.getSquareIds);
     });
 
   });
@@ -68,7 +89,7 @@ describe('LapCtrl', function() {
     });
 
     it('creates a new LapId', function() {
-      session.lapid = "1a";
+      // TODO set session.getGame().lapId to something
       scope.nextLap();
       expect(session.lapid).toNotEqual("lap-1a");
     });

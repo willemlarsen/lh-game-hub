@@ -18,11 +18,16 @@ angular.module('app.lap', [
 .controller('LapCtrl', function LapController($scope, session, GameRepository) {
 
   var createLapId = function() {
-    return "lap-" + GameRepository.createGuid();
+    return GameRepository.createGuid("lap-");
   };
 
   var init = (function() {
+    if (! session.isValidGame()) { return; }
     if (session.isValidLap()) {
+      GameRepository.getSquareIds(session.getGame().lapId).then(function(data) {
+        $scope.squares = data;
+      });
+    } else {
       var game = session.getGame();
       game.lapId = createLapId();
       session.setGame(game);
@@ -30,8 +35,8 @@ angular.module('app.lap', [
     }
   })();
 
-  $scope.number = 1;
-  session.lapId = createLapId();
+  //$scope.number = 1;
+  //session.lapId = createLapId();
 
   $scope.nextLap = function() {
     GameRepository.saveLap();
