@@ -35,6 +35,7 @@ angular.module( 'app', [
     progressionId: '',
     variant: '',
     variantId: '',
+    lap: undefined,
     lapId: '',
   };
   var xgame = {
@@ -44,6 +45,7 @@ angular.module( 'app', [
     progressionId: 'progressionId',
     variant: 'Connemara-1',
     variantId: 'variantId',
+    lap: undefined,
     lapId: '',
   };
 
@@ -71,6 +73,9 @@ angular.module( 'app', [
 
     isValidGame: isValidGame,
 
+    isValidLap: function() {
+      return isValidGame() && !_.isEmpty(game.lapId);
+    },
 
   };
 

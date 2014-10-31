@@ -37,6 +37,7 @@ describe( 'session', function() {
         progressionId: '',
         variant: "",
         variantId: "",
+        lap: undefined,
         lapId: "",
       };
       expect(session.getGame()).toEqual(game);
@@ -66,6 +67,36 @@ describe( 'session', function() {
         variant: "Brien's accent"
       };
       expect( session.game ).not.toBeDefined();
+    });
+
+    describe( 'isValidLap()', function() {
+
+      it( 'returns false if lapId is not defined', function() {
+        var game = {
+          language: 'Irish',
+          dialect: 'Conamara',
+          progression: 'Simple',
+          variant: "Brien's accent",
+          lapId: undefined
+        };
+        session.setGame(game);
+
+        expect(session.isValidLap()).toBe(false);
+      });
+
+      it( 'returns true if lapId is defined', function() {
+        var game = {
+          language: 'Irish',
+          dialect: 'Conamara',
+          progression: 'Simple',
+          variant: "Brien's accent",
+          lapId: 'my-id'
+        };
+        session.setGame(game);
+
+        expect(session.isValidLap()).toBe(true);
+      });
+
     });
 
   });

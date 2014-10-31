@@ -22,7 +22,7 @@ angular.module('app.lap', [
   };
 
   var init = (function() {
-    if (session.isValidGame()) {
+    if (session.isValidLap()) {
       var game = session.getGame();
       game.lapId = createLapId();
       session.setGame(game);
