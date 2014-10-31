@@ -48,8 +48,8 @@ describe('LapCtrl', function() {
       expect(session.lapId).toEqual("lap-1");
     });
 
-    it('lapId is saved', function() {
-      sinon.assert.calledOnce(mockGameRepository.saveLap);
+    xit('lap is saved in session', function() {
+      expect(session.lap).toEqual(1);
     });
 
   });
