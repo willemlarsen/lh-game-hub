@@ -51,6 +51,13 @@ angular.module( 'app', [
     game = $cookies.game;
   }
 
+  var isValidGame = function() {
+      return !_.isEmpty(game.language) &&
+        !_.isEmpty(game.dialect) &&
+        !_.isEmpty(game.progression) &&
+        !_.isEmpty(game.variant);
+    };
+
   var session = {
     setGame: function(_game_) {
       game = _.clone(_game_);
@@ -62,12 +69,8 @@ angular.module( 'app', [
       return _.clone(game);
     },
 
-    isValidGame: function() {
-      return !_.isEmpty(game.language) &&
-        !_.isEmpty(game.dialect) &&
-        !_.isEmpty(game.progression) &&
-        !_.isEmpty(game.variant);
-    }
+    isValidGame: isValidGame,
+
 
   };
 
