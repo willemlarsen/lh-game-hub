@@ -17,15 +17,8 @@ angular.module('app.variant', [
 
 .controller('VariantCtrl', function VariantController($scope, session, GameRepository) {
 
-  var validGame = function() {
-      return !_.isEmpty(session.getGame().language) &&
-        !_.isEmpty(session.getGame().dialect) &&
-        !_.isEmpty(session.getGame().progression) &&
-        !_.isEmpty(session.getGame().variant);
-    };
-
   var init = function() {
-    if (validGame()) {
+    if (session.isValidGame()) {
       GameRepository.getLaps().then(function(laps) {
         $scope.laps = laps;
       },
@@ -34,7 +27,7 @@ angular.module('app.variant', [
       });
     }
   };
-  $scope.currentLap = "";
+
   $scope.$on('gameChanged', function(event) {
     init();
   });

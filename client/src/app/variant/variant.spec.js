@@ -1,8 +1,7 @@
-describe('SquareCtrl', function() {
+describe('VariantCtrl', function() {
   var scope,
     session,
-    deferredSquare,
-    deferredLanguages,
+    deferredLaps,
     mockGameRepository;
 
   beforeEach(function() {
@@ -13,11 +12,10 @@ describe('SquareCtrl', function() {
       session = _session_;
 
       mockGameRepository = sinon.stub(GameRepository);
-      deferredSquare = $q.defer();
-      deferredLanguages = $q.defer();
-      mockGameRepository.getLanguages.returns(deferredLanguages.promise);
+      deferredLaps = $q.defer();
+      mockGameRepository.getLaps.returns(deferredLaps.promise);
 
-      $controller("SquareCtrl", {
+      $controller("VariantCtrl", {
         $scope: scope,
         GameRepository: mockGameRepository
       });
@@ -28,8 +26,30 @@ describe('SquareCtrl', function() {
 
   describe('when initialized', function() {
 
-    it('it does nothing', function() {
-      expect(true).toBe(true);
+  });
+
+  describe('init()', function() {
+
+    beforeEach(function() {
+      session = sinon.stub(session);
+    });
+
+    it("fires 'gameChanged' is broadcast", function() {
+      session.isValidGame.returns(true);
+      scope.$broadcast('gameChanged');
+      sinon.assert.calledOnce(mockGameRepository.getLaps);
+    });
+
+    it('loads laps to scope', function() {
+      session.isValidGame.returns(true);
+      scope.$broadcast('gameChanged');
+      sinon.assert.calledOnce(mockGameRepository.getLaps);
+    });
+
+    it("when session.isValidGame is false it doesn't load laps", function() {
+      session.isValidGame.returns(false);
+      scope.$broadcast('gameChanged');
+      sinon.assert.notCalled(mockGameRepository.getLaps);
     });
 
   });
