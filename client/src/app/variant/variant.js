@@ -28,6 +28,15 @@ angular.module('app.variant', [
     }
   };
 
+  $scope.$watch('currentLap', function() {
+    if ( $scope.currentLap ) {
+      var game = session.getGame();
+      game.lap = $scope.currentLap.lapIndex + 1;
+      game.lapId = $scope.currentLap.lapId;
+      session.setGame(game);
+    }
+  });
+
   $scope.$on('gameChanged', function(event) {
     init();
   });

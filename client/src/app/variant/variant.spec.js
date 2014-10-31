@@ -54,5 +54,18 @@ describe('VariantCtrl', function() {
 
   });
 
+  describe('when currentLapId', function() {
+
+    it("changes, session lap is changed", function() {
+      scope.currentLap = { 1: 'another id' };
+      scope.$eval();
+      expect(session.getGame().lap).toEqual(scope.currentLapId);
+    });
+
+  });
+
+
+  //scope.$eval() // triggers $watch callbacks
+
 });
 

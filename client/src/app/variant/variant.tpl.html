@@ -2,11 +2,9 @@
   <form>
     <select ng-model="currentLap">
       <option value="">--choose lap--</option>
-      <option ng-repeat="(lapIndex, lap) in laps"
-      value="{{lap}}">{{lapIndex + 1}}</option>
+      <option ng-repeat="(lapIndex, lapId) in laps"
+      value="{{currentLap}}">{{lapIndex + 1}}</option>
     </select>
-    <br>
   </form>
 </div>
-
 
