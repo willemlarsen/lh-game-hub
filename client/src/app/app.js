@@ -54,11 +54,11 @@ angular.module( 'app', [
   }
 
   var isValidGame = function() {
-      return !_.isEmpty(game.language) &&
-        !_.isEmpty(game.dialect) &&
-        !_.isEmpty(game.progression) &&
-        !_.isEmpty(game.variant);
-    };
+    return !_.isEmpty(game.language) &&
+      !_.isEmpty(game.dialect) &&
+      !_.isEmpty(game.progression) &&
+      !_.isEmpty(game.variant);
+  };
 
   var session = {
     setGame: function(_game_) {
