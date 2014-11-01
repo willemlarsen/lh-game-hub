@@ -38,7 +38,7 @@ angular.module( 'app', [
     lap: undefined,
     lapId: '',
   };
-  var xgame = {
+  var defaultGame = {
     language: 'Irish',
     dialect: 'Connacht',
     progression: 'Brían\'s Favorite',
@@ -48,6 +48,7 @@ angular.module( 'app', [
     lap: undefined,
     lapId: '',
   };
+  game = defaultGame;
 
   if ($cookies.game) {
     game = $cookies.game;
