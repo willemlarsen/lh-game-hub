@@ -29,10 +29,10 @@ angular.module('app.variant', [
   };
 
   $scope.$watch('currentLap', function() {
-    if ( $scope.currentLap ) {
+    if ( ! _.isEmpty($scope.currentLap) ) {
       var game = session.getGame();
-      game.lap = $scope.currentLap.lapIndex + 1;
-      game.lapId = $scope.currentLap.lapId;
+      game.lap = _.indexOf($scope.laps, $scope.currentLap)+1;
+      game.lapId = $scope.currentLap;
       session.setGame(game);
     }
   });
