@@ -66,10 +66,9 @@ describe('LapCtrl', function() {
       expect(session.getGame().lap).toEqual(1);
     });
 
-    it('when isValidGame and isValidLap square ids are retrieved', function() {
+    it('when isValidLap, square ids are retrieved', function() {
       deferredSquares.resolve();
       scope.$apply();
-      createLap();
       sinon.assert.calledOnce(mockGameRepository.getSquareIds);
     });
 

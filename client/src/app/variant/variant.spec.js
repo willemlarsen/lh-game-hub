@@ -24,30 +24,34 @@ describe('VariantCtrl', function() {
 
   });
 
-  describe('when initialized', function() {
-
-  });
-
   describe('init()', function() {
 
+    var game = {
+      language: 'Irish',
+      dialect: 'Connacht',
+      progression: 'Brían\'s Favorite',
+      progressionId: 'progressionId',
+      variant: 'Connemara-1',
+      variantId: 'variantId',
+      lap: undefined,
+      lapId: '',
+    };
+
     beforeEach(function() {
-      session = sinon.stub(session);
+
     });
 
-    it("fires 'gameChanged' is broadcast", function() {
-      session.isValidGame.returns(true);
+    xit("fires 'gameChanged' is broadcast", function() {
       scope.$broadcast('gameChanged');
       sinon.assert.calledOnce(mockGameRepository.getLaps);
     });
 
     it('loads laps to scope', function() {
-      session.isValidGame.returns(true);
-      scope.$broadcast('gameChanged');
+      session.setGame(game);
       sinon.assert.calledOnce(mockGameRepository.getLaps);
     });
 
     it("when session.isValidGame is false it doesn't load laps", function() {
-      session.isValidGame.returns(false);
       scope.$broadcast('gameChanged');
       sinon.assert.notCalled(mockGameRepository.getLaps);
     });
@@ -90,7 +94,6 @@ describe('VariantCtrl', function() {
     });
 
     it('creates a new LapId', function() {
-      // TODO set session.getGame().lapId to something
       var lapId = "previous lapId";
       var game = session.getGame();
       game.lapId = lapId;

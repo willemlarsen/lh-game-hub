@@ -17,14 +17,19 @@ angular.module('app.lap', [
 
 .controller('LapCtrl', function LapController($scope, session, GameRepository) {
 
-  var init = (function() {
-    if (! session.isValidGame()) { return; }
+  var init = function() {
     if (session.isValidLap()) {
-      GameRepository.getSquareIds(session.getGame().lapId).then(function(data) {
+      $scope.lapId = session.getGame().lapId;
+      GameRepository.getSquareIds($scope.lapId).then(function(data) {
         $scope.squares = data;
       });
     }
-  })();
+  };
+  init();
+
+  $scope.$on('gameChanged', function(event) {
+    init();
+  });
 
 })
 

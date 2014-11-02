@@ -1,6 +1,9 @@
 <div ng-if="variantId">
   lap:
-  <select ng-model="currentLap" ng-options="laps.indexOf(lap)+1 for lap in laps">
+  <select
+    ng-model="currentLap"
+    ng-options="laps.indexOf(lap)+1 for lap in laps"
+    ng-change="changeLap(currentLap)">
   </select>
   <button ng-if="editable" ng-click="newLap()">new</button>
 </div>

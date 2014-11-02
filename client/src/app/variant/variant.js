@@ -8,7 +8,7 @@ angular.module('app.variant', [
     restrict: 'E', //E = element, A = attribute, C = class, M = comment
     scope: {
       //@ reads the attribute value, = provides two-way binding, & works with functions
-      editable: '='
+      editable: '=',
     },
     templateUrl: "variant/variant.tpl.html",
     controller: 'VariantCtrl' //Embed a custom controller in the directive
@@ -16,8 +16,6 @@ angular.module('app.variant', [
 })
 
 .controller('VariantCtrl', function VariantController($scope, session, GameRepository) {
-
-  var variantId;
 
   var init = function() {
     $scope.variantId = session.getGame().variantId;
@@ -41,14 +39,12 @@ angular.module('app.variant', [
     GameRepository.saveLap(game.lapId, {constraint: '', squares: []});
   };
 
-  $scope.$watch('currentLap', function() {
-    if ( ! _.isEmpty($scope.currentLap) ) {
-      var game = session.getGame();
-      game.lap = _.indexOf($scope.laps, $scope.currentLap)+1;
-      game.lapId = $scope.currentLap;
-      session.setGame(game);
-    }
-  });
+  $scope.changeLap = function(lapId) {
+    var game = session.getGame();
+    game.lap = _.indexOf($scope.laps, lapId)+1;
+    game.lapId = lapId;
+    session.setGame(game);
+  };
 
   $scope.$on('gameChanged', function(event) {
     init();
