@@ -17,7 +17,10 @@ angular.module('app.variant', [
 
 .controller('VariantCtrl', function VariantController($scope, session, GameRepository) {
 
+  var variantId;
+
   var init = function() {
+    $scope.variantId = session.getGame().variantId;
     if (session.isValidGame()) {
       GameRepository.getLaps().then(function(laps) {
         $scope.laps = laps;

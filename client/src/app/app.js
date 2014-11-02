@@ -48,7 +48,7 @@ angular.module( 'app', [
     lap: undefined,
     lapId: '',
   };
-  //game = defaultGame;
+  game = defaultGame;
 
   if ($cookies.game) {
     game = $cookies.game;
