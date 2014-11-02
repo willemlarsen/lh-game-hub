@@ -60,6 +60,10 @@ angular.module('app').factory('GameRepository', function(session, $q) {
       saveLapToVariant(lapId, session.getGame().variantId);
     },
 
+    getSquare: function(squareId) {
+      return retrieveChild( squareId);
+    },
+
     saveSquare: function(squareId, square, lapId) {
       saveSquareToLap(squareId, lapId);
       var squareRef = ref.child(squareId);

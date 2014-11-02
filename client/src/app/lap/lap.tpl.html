@@ -2,7 +2,6 @@
 <div ng-if="lapId">
   <div ng-if="editable">
     <form >
-      <h1>Lap: {{number}}</h1>
       <h2>Constraint:
         <input type="text" ng-model="constraint">
         {{constraint}}
@@ -14,10 +13,9 @@
     </form>
   </div>
   <div ng-if="! editable">
-    <h1>Lap: {{number}}</h1>
     <h2>Constraint: {{constraint}}<h2>
-      <div ng-repeat="type in ['what', 'who', 'where', 'how many', 'which', 'when', 'why', 'how']">
-        <square editable="false" type="type"></square>
+      <div ng-repeat="squareId in squareIds">
+        <square editable="false" squareId="squareId"></square>
       </div>
   </div>
 </div>
