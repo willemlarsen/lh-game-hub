@@ -17,33 +17,14 @@ angular.module('app.lap', [
 
 .controller('LapCtrl', function LapController($scope, session, GameRepository) {
 
-  var createLapId = function() {
-    return GameRepository.createGuid("lap-");
-  };
-
   var init = (function() {
     if (! session.isValidGame()) { return; }
     if (session.isValidLap()) {
       GameRepository.getSquareIds(session.getGame().lapId).then(function(data) {
         $scope.squares = data;
       });
-    } else {
-      var game = session.getGame();
-      game.lapId = createLapId();
-      session.setGame(game);
-      GameRepository.saveLap(game.lapId, {constraint: '', squares: []});
     }
   })();
-
-  //$scope.number = 1;
-  //session.lapId = createLapId();
-
-  $scope.nextLap = function() {
-    GameRepository.saveLap();
-    $scope.constraint = '';
-    $scope.number += 1;
-    session.lapId = createLapId();
-  };
 
 })
 

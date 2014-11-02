@@ -27,6 +27,16 @@ angular.module('app.variant', [
       });
     }
   };
+  init();
+
+  $scope.newLap = function() {
+    //GameRepository.saveLap(session.getGame().lapId, $scope.currentLap);
+    $scope.currentLap = GameRepository.createGuid("lap-");
+    var game = session.getGame();
+    game.lapId = $scope.currentLap;
+    session.setGame(game);
+    GameRepository.saveLap(game.lapId, {constraint: '', squares: []});
+  };
 
   $scope.$watch('currentLap', function() {
     if ( ! _.isEmpty($scope.currentLap) ) {

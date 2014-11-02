@@ -2,6 +2,5 @@
   lap:
   <select ng-model="currentLap" ng-options="laps.indexOf(lap)+1 for lap in laps">
   </select>
+  <button ng-if="editable" ng-click="newLap()">new</button>
 </div>
-
-

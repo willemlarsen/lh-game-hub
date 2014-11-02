@@ -75,31 +75,4 @@ describe('LapCtrl', function() {
 
   });
 
-  describe('when ready for next Lap', function() {
-
-    it('Increments Lap number by one', function() {
-      scope.number = 1;
-      scope.nextLap();
-      expect(scope.number).toEqual(2);
-    });
-
-    it('saves the Lap', function() {
-      scope.nextLap();
-      sinon.assert.calledOnce(mockGameRepository.saveLap);
-    });
-
-    it('creates a new LapId', function() {
-      // TODO set session.getGame().lapId to something
-      scope.nextLap();
-      expect(session.lapid).toNotEqual("lap-1a");
-    });
-
-    it('constraint field is cleared after saving to db', function() {
-      var emptyConstraint = '';
-      scope.nextLap();
-      expect(scope.constraint).toEqual(emptyConstraint);
-    });
-
-  });
-
 });
