@@ -12,29 +12,24 @@ angular.module('app').factory('GameRepository', function(session, $q) {
     return deferred.promise;
   };
 
-  var saveSquareToLap = function(squareId, lapId) {
-    var lapIdRef = ref.child(session.getGame().language).child(lapId);
-    var squaresRef = lapIdRef.child('squares');
+  var saveXtoY = function(xId, yId, container) {
+    var lapIdRef = ref.child(session.getGame().language).child(yId);
+    var squaresRef = lapIdRef.child(container);
     squaresRef.once('value', function(item) {
       var list = item.val() || [];
-      if (! _.contains(list, squareId) ) {
-        list.push(squareId);
+      if (! _.contains(list, xId) ) {
+        list.push(xId);
         squaresRef.set(list);
       }
     });
+  };
 
+  var saveSquareToLap = function(squareId, lapId) {
+    saveXtoY(squareId, lapId, 'squares');
   };
 
   var saveLapToVariant = function(lapId, variantId) {
-    var variantRef = ref.child(session.getGame().language).child(variantId);
-    var itemsRef = variantRef.child('laps');
-    itemsRef.once('value', function(item) {
-      var list = item.val() || [];
-      if (! _.contains(list, lapId) ) {
-        list.push(lapId);
-        itemsRef.set(list);
-      }
-    });
+    saveXtoY(lapId, variantId, 'squares');
   };
 
   return {
