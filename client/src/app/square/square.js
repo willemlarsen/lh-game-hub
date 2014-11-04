@@ -38,6 +38,7 @@ angular.module('app.square', [
       //'interactions': [angular.copy(interaction)]
     //};
     if (! _.isEmpty(squareId)) {
+      $scope.squareId = squareId;
       GameRepository.getSquare(squareId).then(function (data) {
         $scope.square = data;
       });
@@ -50,11 +51,12 @@ angular.module('app.square', [
     square.interactions.push(angular.copy(interaction));
   };
 
-  //$scope.submit = function(square) {
-    //var prefix = "square-" + $scope.type + "-";
+  $scope.submit = function(square) {
+    // TODO move the creation of a new square to laps
+    //var prefix = "square-" + square.type.replace(' ', '-') + "-";
     //var squareId = GameRepository.createGuid(prefix);
-    //GameRepository.saveSquare(squareId, square, session.getGame().lapId);
-  //};
+    GameRepository.saveSquare($scope.squareId, square, session.getGame().lapId);
+  };
 
 })
 

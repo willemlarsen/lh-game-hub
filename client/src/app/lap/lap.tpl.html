@@ -6,7 +6,7 @@
         <input type="text" ng-model="constraint">
       </h2>
       <div ng-repeat="squareId in squareIds">
-        <square editable="true" squareId="squareId"></square>
+        <square editable="true" square-id="squareId"></square>
       </div>
       <input type="button" ng-click="nextLap()" id="nextLap" value="New Lap"/>
     </form>
@@ -14,7 +14,7 @@
   <div ng-if="! editable">
     <h2>Constraint: {{constraint}}<h2>
       <div ng-repeat="squareId in squareIds">
-        <square editable="false" squareId="squareId"></square>
+        <square editable="false" square-id="squareId"></square>
       </div>
   </div>
 </div>

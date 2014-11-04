@@ -17,8 +17,10 @@ angular.module('app').factory('GameRepository', function(session, $q) {
     var squaresRef = lapIdRef.child('squares');
     squaresRef.once('value', function(item) {
       var list = item.val() || [];
-      list.push(squareId);
-      squaresRef.set(list);
+      if (! _.contains(list, squareId) ) {
+        list.push(squareId);
+        squaresRef.set(list);
+      }
     });
 
   };
@@ -28,7 +30,7 @@ angular.module('app').factory('GameRepository', function(session, $q) {
     var itemsRef = variantRef.child('laps');
     itemsRef.once('value', function(item) {
       var list = item.val() || [];
-      if (! _.contains(list, item) ) {
+      if (! _.contains(list, lapId) ) {
         list.push(lapId);
         itemsRef.set(list);
       }
