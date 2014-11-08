@@ -15,6 +15,7 @@ describe('LanguageCtrl', function() {
       mockGameRepository = sinon.stub(GameRepository);
       deferredLanguages = $q.defer();
       mockGameRepository.getLanguages.returns(deferredLanguages.promise);
+      deferredLanguage = $q.defer();
 
       $controller("LanguageCtrl", {
         $scope: scope,
@@ -29,6 +30,7 @@ describe('LanguageCtrl', function() {
     var languages = [ 'Engrish', 'Spanglish' ];
 
     beforeEach(function() {
+      mockGameRepository.getLanguage.returns(deferredLanguage.promise);
       deferredLanguages.resolve(languages);
       scope.$apply();
     });
