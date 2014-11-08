@@ -17,7 +17,30 @@ angular.module('app.square', [
   };
 })
 
-.controller('SquareCtrl', function SquareController($scope, session, GameRepository) {
+.controller('SquareCtrl', function SquareController($scope, session, GameRepository, SquareService) {
+
+  var init = function(squareId) {
+    if (! _.isEmpty(squareId)) {
+      $scope.squareId = squareId;
+      GameRepository.getSquare(squareId).then(function (data) {
+        $scope.square = data;
+      });
+    }
+  };
+  init($scope.$parent.squareId);
+
+
+  $scope.addFields = function(square) {
+    SquareService.addInteraction(square);
+  };
+
+  $scope.submit = function(square) {
+    GameRepository.saveSquare($scope.squareId, square, session.getGame().lapId);
+  };
+
+})
+
+.factory('SquareService', function SquareService(GameRepository) {
 
   var interaction = {
     "question": {
@@ -30,34 +53,31 @@ angular.module('app.square', [
     }
   };
 
-  var init = function(squareId) {
-    // TODO: Use for new square
-    //$scope.square = {
-      //"type": type,
-      //"props": "",
-      //'interactions': [angular.copy(interaction)]
-    //};
-    if (! _.isEmpty(squareId)) {
-      $scope.squareId = squareId;
-      GameRepository.getSquare(squareId).then(function (data) {
-        $scope.square = data;
-      });
+  var createSquareGuid = function(type) {
+    var prefix = "square-" + type.replace(' ', '-') + "-";
+    return GameRepository.createGuid(prefix);
+  };
+
+  return {
+
+    addInteraction: function() {
+      square.interactions.push(angular.copy(interaction));
+    },
+
+    newSquare: function(type, lapId) {
+      var id = createSquareGuid(type);
+      var square = {
+        "type": type,
+        "props": "",
+        'interactions': [angular.copy(interaction)]
+      };
+
+      GameRepository.saveSquare(id, square, lapId);
+
+      return { id: square };
     }
+
   };
-  init($scope.$parent.squareId);
-
-
-  $scope.addFields = function(square) {
-    square.interactions.push(angular.copy(interaction));
-  };
-
-  $scope.submit = function(square) {
-    // TODO move the creation of a new square to laps
-    //var prefix = "square-" + square.type.replace(' ', '-') + "-";
-    //var squareId = GameRepository.createGuid(prefix);
-    GameRepository.saveSquare($scope.squareId, square, session.getGame().lapId);
-  };
-
 })
 
 ;

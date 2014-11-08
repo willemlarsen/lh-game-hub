@@ -96,3 +96,24 @@ describe('SquareCtrl', function() {
   });
 
 });
+
+describe( 'SquareService', function() {
+
+  beforeEach( module( 'app' ) );
+
+  describe( 'create', function() {
+
+    beforeEach( inject( function( _session_ ) {
+      session = _session_;
+    }));
+
+
+    xit( 'initializes empty game', function() {
+      expect(session.getGame()).toEqual(game);
+    });
+
+  });
+
+});
+
+

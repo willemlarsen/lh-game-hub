@@ -8,7 +8,7 @@
       <div ng-repeat="squareId in squareIds">
         <square editable="true" square-id="squareId"></square>
       </div>
-      <input type="button" ng-click="nextLap()" id="nextLap" value="New Lap"/>
+      <input type="button" ng-click="newSquare()" id="newSquare" value="New Square"/>
     </form>
   </div>
   <div ng-if="! editable">

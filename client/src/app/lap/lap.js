@@ -15,7 +15,7 @@ angular.module('app.lap', [
   };
 })
 
-.controller('LapCtrl', function LapController($scope, session, GameRepository) {
+.controller('LapCtrl', function LapController($scope, session, GameRepository, SquareService) {
 
   var init = function() {
     if (session.isValidLap()) {
@@ -26,6 +26,17 @@ angular.module('app.lap', [
     }
   };
   init();
+
+  $scope.newSquare = function() {
+    var squareId = $scope.squareIds[$scope.squareIds.length-1];
+    if (squareId) {
+      GameRepository.getSquare(squareId).then(function(data) {
+        SquareService.newSquare(data.type, $scope.lapId);
+      });
+    } else {
+      SquareService.newSquare('what', $scope.lapId);
+    }
+  };
 
   $scope.$on('gameChanged', function(event) {
     init();

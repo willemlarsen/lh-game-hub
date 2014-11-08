@@ -40,7 +40,7 @@ describe( 'session', function() {
         lap: undefined,
         lapId: "",
       };
-      expect(session.getGame()).toEqual(game);
+      expect(_.keys(session.getGame())).toEqual(_.keys(game));
     });
 
   });
@@ -103,3 +103,4 @@ describe( 'session', function() {
 
 
 });
+
