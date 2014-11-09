@@ -31,7 +31,11 @@ angular.module('app.lap', [
     var squareId = $scope.squareIds[$scope.squareIds.length-1];
     if (squareId) {
       GameRepository.getSquare(squareId).then(function(data) {
-        SquareService.newSquare(data.type, $scope.lapId);
+        var type = SquareService.nextType(data.type);
+        if (type) {
+          var squareId = SquareService.newSquare(type, $scope.lapId);
+          $scope.squareIds.push(squareId);
+        }
       });
     } else {
       SquareService.newSquare('what', $scope.lapId);

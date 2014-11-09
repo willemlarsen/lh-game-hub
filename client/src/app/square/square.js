@@ -42,6 +42,10 @@ angular.module('app.square', [
 
 .factory('SquareService', function SquareService(GameRepository) {
 
+  var types = [
+    'what', 'who', 'where', 'how many', 'which', 'when', 'why', 'how'
+  ];
+
   var interaction = {
     "question": {
       "text": "",
@@ -60,7 +64,7 @@ angular.module('app.square', [
 
   return {
 
-    addInteraction: function() {
+    addInteraction: function(square) {
       square.interactions.push(angular.copy(interaction));
     },
 
@@ -74,7 +78,12 @@ angular.module('app.square', [
 
       GameRepository.saveSquare(id, square, lapId);
 
-      return { id: square };
+      return id;
+    },
+
+    nextType: function(type) {
+      var index = _.indexOf(types, type);
+      return types[index + 1];
     }
 
   };

@@ -53,13 +53,13 @@ describe('SquareCtrl', function() {
 
 
     it('appends paired question and answer fields to display', function() {
-      var form = {
+      square = {
         'interactions': [
           []
         ]
       };
-      scope.addFields(form);
-      expect(form.interactions.length).toBe(2);
+      scope.addFields(square);
+      expect(square.interactions.length).toBe(2);
     });
 
   });
@@ -72,25 +72,12 @@ describe('SquareCtrl', function() {
       mockGameRepository.createGuid.returns(guid);
     });
 
-    it('a squareId is created', function() {
-      var form = [{}];
-      scope.submit(form);
-      sinon.assert.calledOnce(mockGameRepository.createGuid);
-    });
-
-    it('squareId is saved to lap', function() {
-      var squareId = '1',
-      lapId = '1',
-      square = {};
-      session.setGame({lapId: lapId});
-      scope.submit(square);
-      sinon.assert.calledWith(mockGameRepository.saveSquare, squareId, square, lapId);
-    });
-
     it('square is saved', function() {
       var form = [{}];
+      scope.squareId = 'squareId';
+      session.setGame({lapId: 'lapId'});
       scope.submit(form);
-      sinon.assert.calledWith(mockGameRepository.saveSquare, "1", form);
+      sinon.assert.calledWith(mockGameRepository.saveSquare, "squareId", form, "lapId");
     });
 
   });
@@ -99,17 +86,30 @@ describe('SquareCtrl', function() {
 
 describe( 'SquareService', function() {
 
+  var SquareService;
+
   beforeEach( module( 'app' ) );
 
-  describe( 'create', function() {
+  beforeEach( inject( function( _SquareService_ ) {
+    SquareService = _SquareService_;
+  }));
 
-    beforeEach( inject( function( _session_ ) {
-      session = _session_;
-    }));
+  describe( 'nextType()', function() {
 
+    it( 'retuns "who" for "what"', function() {
+      expect(SquareService.nextType('what')).toEqual('who');
+    });
 
-    xit( 'initializes empty game', function() {
-      expect(session.getGame()).toEqual(game);
+    it( 'retuns "where" for "who"', function() {
+      expect(SquareService.nextType('who')).toEqual('where');
+    });
+
+    it( 'retuns "how many" for "where"', function() {
+      expect(SquareService.nextType('where')).toEqual('how many');
+    });
+
+    it( 'retuns "undefined" for "how"', function() {
+      expect(SquareService.nextType('how')).toBeUndefined();
     });
 
   });

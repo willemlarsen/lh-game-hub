@@ -5,12 +5,14 @@ describe('LapCtrl', function() {
     session,
     deferredLanguages,
     deferredSquares,
+    deferredSquare,
+    mockSquareService,
     mockGameRepository;
 
   beforeEach(function() {
     module("app");
 
-    inject(function($rootScope, $q, $controller, GameRepository, _session_) {
+    inject(function($rootScope, $q, $controller, GameRepository, _session_, SquareService) {
       scope = $rootScope.$new();
       session = _session_;
       controller = $controller;
@@ -21,6 +23,8 @@ describe('LapCtrl', function() {
       //mockGameRepository.createGuid.returns("");
       deferredSquares = $q.defer();
       mockGameRepository.getSquareIds.returns(deferredSquares.promise);
+      mockSquareService = sinon.stub(SquareService);
+      deferredSquare = $q.defer();
 
       $controller("LapCtrl", {
         $scope: scope,
@@ -70,6 +74,33 @@ describe('LapCtrl', function() {
       deferredSquares.resolve();
       scope.$apply();
       sinon.assert.calledOnce(mockGameRepository.getSquareIds);
+    });
+
+  });
+
+  describe('newSquare()', function() {
+
+    var square = {
+      type: 'what'
+    };
+
+    beforeEach(function() {
+      mockGameRepository.getSquare.returns(deferredSquare.promise);
+    });
+
+    it('with no other squares, creates squre type "what"', function() {
+      scope.squareIds = [];
+      scope.newSquare();
+      sinon.assert.calledWith(mockSquareService.newSquare, 'what', undefined);
+    });
+
+    xit('with "what" as last square will create "who" square', function() {
+      scope.squareIds = ["squareId-1"];
+      deferredSquare.resolve(square);
+      scope.$apply();
+      scope.newSquare();
+      sinon.assert.calledOnce(mockSquareService.newSquare);
+      sinon.assert.calledWith(mockSquareService.newSquare, 'who', undefined);
     });
 
   });
