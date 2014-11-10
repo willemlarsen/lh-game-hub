@@ -29,7 +29,7 @@ angular.module('app').factory('GameRepository', function(session, $q) {
   };
 
   var saveLapToVariant = function(lapId, variantId) {
-    saveXtoY(lapId, variantId, 'squares');
+    saveXtoY(lapId, variantId, 'laps');
   };
 
   return {
