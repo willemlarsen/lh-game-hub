@@ -20,6 +20,7 @@ angular.module('app.variant', [
   var init = function() {
     $scope.variantId = session.getGame().variantId;
     if (session.isValidGame()) {
+      $scope.currentLap = session.getGame().lapId;
       GameRepository.getLaps().then(function(laps) {
         $scope.laps = laps;
       },
