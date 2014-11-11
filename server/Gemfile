@@ -1,0 +1,14 @@
+
+source "http://rubygems.org"
+
+gem 'sinatra'
+gem 'sinatra-contrib'
+#gem 'titleize'
+
+group :test, :development do
+  gem 'rr'
+  gem 'timecop'
+  gem 'guard'
+  gem 'guard-minitest'
+end
+
