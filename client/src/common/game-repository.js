@@ -5,21 +5,21 @@ angular.module('app').factory('GameRepository', function(session, $q) {
 
   var retrieveChild = function(child) {
     var deferred = $q.defer();
-    var languageRef = ref.child(child);
-    languageRef.once('value', function(data) {
+    var childRef = ref.child(child);
+    childRef.once('value', function(data) {
       deferred.resolve(data.val());
     });
     return deferred.promise;
   };
 
   var saveXtoY = function(xId, yId, container) {
-    var lapIdRef = ref.child(session.getGame().language).child(yId);
-    var squaresRef = lapIdRef.child(container);
-    squaresRef.once('value', function(item) {
+    var yRef = ref.child(session.getGame().language).child(yId);
+    var containerRef = yRef.child(container);
+    containerRef.once('value', function(item) {
       var list = item.val() || [];
       if (! _.contains(list, xId) ) {
         list.push(xId);
-        squaresRef.set(list);
+        containerRef.set(list);
       }
     });
   };
