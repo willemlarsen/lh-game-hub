@@ -88,10 +88,23 @@ describe('LapCtrl', function() {
       mockGameRepository.getSquare.returns(deferredSquare.promise);
     });
 
+    it('with undefined squareIds, creates square type "what"', function() {
+      scope.squareIds = undefined;
+      scope.newSquare();
+      sinon.assert.calledWith(mockSquareService.newSquare, 'what', undefined);
+    });
+
     it('with no other squares, creates squre type "what"', function() {
       scope.squareIds = [];
       scope.newSquare();
       sinon.assert.calledWith(mockSquareService.newSquare, 'what', undefined);
+    });
+
+    it('sets "what" square into the squares array', function() {
+      var guid = mockGameRepository.createGuid();
+      scope.squareIds = [];
+      scope.newSquare();
+      expect(scope.squareIds[0]).toEqual(guid);
     });
 
     xit('with "what" as last square will create "who" square', function() {
