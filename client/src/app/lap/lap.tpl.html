@@ -3,17 +3,17 @@
   <div ng-if="editable">
     <form >
       <h2>Constraint:
-        <input type="text" ng-model="constraint">
+        <input type="text" ng-model="lap.constraint">
       </h2>
-      <div ng-repeat="squareId in squareIds">
+      <div ng-repeat="squareId in lap.squares">
         <square editable="true" square-id="squareId"></square>
       </div>
       <input type="button" ng-click="newSquare()" id="newSquare" value="New Square"/>
     </form>
   </div>
   <div ng-if="! editable">
-    <h2>Constraint: {{constraint}}<h2>
-      <div ng-repeat="squareId in squareIds">
+    <h2>Constraint: {{lap.constraint}}<h2>
+      <div ng-repeat="squareId in lap.squares">
         <square editable="false" square-id="squareId"></square>
       </div>
   </div>

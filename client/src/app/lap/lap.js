@@ -18,35 +18,36 @@ angular.module('app.lap', [
 .controller('LapCtrl', function LapController($scope, session, GameRepository, SquareService) {
 
   var init = function() {
+    $scope.lap = {};
     if (session.isValidLap()) {
       $scope.lapId = session.getGame().lapId;
       GameRepository.getSquareIds($scope.lapId).then(function(data) {
-        $scope.squareIds = data;
+        $scope.lap.squares = data;
       });
     }
   };
   init();
 
   $scope.newSquare = function() {
-    $scope.squareIds = $scope.squareIds || [];
-    var squareId = $scope.squareIds[$scope.squareIds.length-1];
+    $scope.lap.squares = $scope.lap.squares || [];
+    var squareId = $scope.lap.squares[$scope.lap.squares.length-1];
     if (squareId) {
       GameRepository.getSquare(squareId).then(function(data) {
         var type = SquareService.nextType(data.type);
         if (type) {
           var squareId = SquareService.newSquare(type, $scope.lapId);
-          $scope.squareIds.push(squareId);
+          $scope.lap.squares.push(squareId);
         }
       });
     } else {
-      $scope.squareIds.push(
+      $scope.lap.squares.push(
         SquareService.newSquare('what', $scope.lapId)
       );
     }
   };
 
   $scope.saveLap = function() {
-    GameRepository.saveLap($scope.lapId, { "constraint": $scope.constraint, "squares": $scope.squareIds });
+    GameRepository.saveLap($scope.lapId, { "constraint": $scope.constraint, "squares": $scope.lap.squares });
   };
 
   $scope.$on('gameChanged', function(event) {

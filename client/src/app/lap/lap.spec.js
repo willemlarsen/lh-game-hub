@@ -89,26 +89,26 @@ describe('LapCtrl', function() {
     });
 
     it('with undefined squareIds, creates square type "what"', function() {
-      scope.squareIds = undefined;
+      scope.lap = { "squares": undefined };
       scope.newSquare();
       sinon.assert.calledWith(mockSquareService.newSquare, 'what', undefined);
     });
 
     it('with no other squares, creates squre type "what"', function() {
-      scope.squareIds = [];
+      scope.lap = { "squares": [] };
       scope.newSquare();
       sinon.assert.calledWith(mockSquareService.newSquare, 'what', undefined);
     });
 
     it('sets "what" square into the squares array', function() {
       var guid = mockGameRepository.createGuid();
-      scope.squareIds = [];
+      scope.lap = { "squares": [] };
       scope.newSquare();
-      expect(scope.squareIds[0]).toEqual(guid);
+      expect(scope.lap.squares[0]).toEqual(guid);
     });
 
     xit('with "what" as last square will create "who" square', function() {
-      scope.squareIds = ["squareId-1"];
+      scope.lap.squares = ["squareId-1"];
       deferredSquare.resolve(square);
       scope.$apply();
       scope.newSquare();
@@ -125,8 +125,7 @@ describe('LapCtrl', function() {
       var lap = { constraint: constraintInput, squares: ["squareId"] };
       var lapId = "lapId";
       scope.lapId = _.clone(lapId);
-      //scope.lap = _.clone(lap);
-      scope.squareIds = _.clone(lap.squares);
+      scope.lap = _.clone(lap);
       scope.constraint = constraintInput;
       scope.saveLap();
       sinon.assert.calledWith(mockGameRepository.saveLap, lapId, lap);
