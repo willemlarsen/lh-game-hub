@@ -8,7 +8,7 @@ describe('GameRepository', function() {
     module("app");
     inject(function(_GameRepository_) {
       GameRepository = _GameRepository_;
-      mockFirebase = sinon.stub(Firebase);
+      mockFirebase = sinon.stub(Firebase.new);
     });
   });
 
