@@ -118,4 +118,20 @@ describe('LapCtrl', function() {
 
   });
 
+  describe('saveLap()', function() {
+
+    it('sets lap constraint', function() {
+      var constraintInput = "1st Person Singular Present";
+      var lap = { constraint: constraintInput, squares: ["squareId"] };
+      var lapId = "lapId";
+      scope.lapId = _.clone(lapId);
+      //scope.lap = _.clone(lap);
+      scope.squareIds = _.clone(lap.squares);
+      scope.constraint = constraintInput;
+      scope.saveLap();
+      sinon.assert.calledWith(mockGameRepository.saveLap, lapId, lap);
+    });
+
+  });
+
 });
