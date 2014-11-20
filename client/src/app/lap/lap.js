@@ -47,7 +47,7 @@ angular.module('app.lap', [
   };
 
   $scope.saveLap = function() {
-    GameRepository.saveLap($scope.lapId, { "constraint": $scope.constraint, "squares": $scope.lap.squares });
+    GameRepository.saveLap($scope.lapId, $scope.lap);
   };
 
   $scope.$on('gameChanged', function(event) {
