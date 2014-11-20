@@ -21,8 +21,8 @@ angular.module('app.lap', [
     $scope.lap = {};
     if (session.isValidLap()) {
       $scope.lapId = session.getGame().lapId;
-      GameRepository.getSquareIds($scope.lapId).then(function(data) {
-        $scope.lap.squares = data;
+      GameRepository.getLap($scope.lapId).then(function(data) {
+        $scope.lap = data;
       });
     }
   };

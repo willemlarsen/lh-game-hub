@@ -20,9 +20,9 @@ describe('LapCtrl', function() {
       mockGameRepository = sinon.stub(GameRepository);
       deferredLanguages = $q.defer();
       mockGameRepository.getLanguages.returns(deferredLanguages.promise);
-      //mockGameRepository.createGuid.returns("");
-      deferredSquares = $q.defer();
-      mockGameRepository.getSquareIds.returns(deferredSquares.promise);
+      deferredLap = $q.defer();
+      mockGameRepository.getLap.returns(deferredLap.promise);
+
       mockSquareService = sinon.stub(SquareService);
       deferredSquare = $q.defer();
 
@@ -70,10 +70,9 @@ describe('LapCtrl', function() {
       expect(session.getGame().lap).toEqual(1);
     });
 
-    it('when isValidLap, square ids are retrieved', function() {
-      deferredSquares.resolve();
-      scope.$apply();
-      sinon.assert.calledOnce(mockGameRepository.getSquareIds);
+    it('gets the lap', function() {
+
+      sinon.assert.calledOnce(mockGameRepository.getLap);
     });
 
   });
