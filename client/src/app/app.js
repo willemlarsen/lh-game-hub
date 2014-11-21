@@ -38,20 +38,9 @@ angular.module( 'app', [
     lap: undefined,
     lapId: '',
   };
-  var defaultGame = {
-    language: 'Irish',
-    dialect: 'Connacht',
-    progression: 'Brían\'s Favorite',
-    progressionId: 'progressionId',
-    variant: 'Connemara-1',
-    variantId: 'variantId',
-    lap: undefined,
-    lapId: '',
-  };
-  game = defaultGame;
 
   if ($cookies.game) {
-    game = $cookies.game;
+    game = angular.fromJson($cookies.game);
   }
 
   var isValidGame = function() {
@@ -64,7 +53,7 @@ angular.module( 'app', [
   var session = {
     setGame: function(_game_) {
       game = _.clone(_game_);
-      $cookies.game = game;
+      $cookies.game = angular.toJson(game);
       $rootScope.$broadcast('gameChanged');
     },
 
