@@ -96,19 +96,19 @@ describe( 'SquareService', function() {
 
   describe( 'nextType()', function() {
 
-    it( 'retuns "who" for "what"', function() {
+    it( 'returns "who" for "what"', function() {
       expect(SquareService.nextType('what')).toEqual('who');
     });
 
-    it( 'retuns "where" for "who"', function() {
+    it( 'returns "where" for "who"', function() {
       expect(SquareService.nextType('who')).toEqual('where');
     });
 
-    it( 'retuns "how many" for "where"', function() {
+    it( 'returns "how many" for "where"', function() {
       expect(SquareService.nextType('where')).toEqual('how many');
     });
 
-    it( 'retuns "undefined" for "how"', function() {
+    it( 'returns "undefined" for "how"', function() {
       expect(SquareService.nextType('how')).toBeUndefined();
     });
 
